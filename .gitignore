@@ -1,0 +1,25 @@
+﻿# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Testing
+coverage/
+
+# Production
+dist/
+build/
+
+# Environment variables
+.env.
+.env.development.local
+.env.test.local
+
+# Editor
+.vscode/*
+!.vscode/extensions.json
+.idea/
+
+# System files
+.DS_Store
+Thumbs.db
