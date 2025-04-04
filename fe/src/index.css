@@ -1,0 +1,78 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --font-inter: "Inter", sans-serif;
+  --font-serif: "DM Serif Display", serif;
+  --color-purpled: #682d63;
+  --color-blu: #414288;
+  --color-greeno: #5fb49c;
+  --color-greeny: #98dfaf;
+  --color-yellowg: #deefb7;
+}
+
+body {
+  margin: 0;
+  font-family:
+    var(--font-inter),
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    "Roboto",
+    "Oxygen",
+    "Ubuntu",
+    "Cantarell",
+    "Fira Sans",
+    "Droid Sans",
+    "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--);
+  --navbar-height: 80px;
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.gradient-background {
+  background: linear-gradient(
+    300deg,
+    var(--color-purpled),
+    var(--color-blu),
+    var(--color-greeno)
+  );
+  background-size: 180% 180%;
+  animation: gradient-animation 18s ease infinite;
+}
+
+html {
+  background: linear-gradient(
+    300deg,
+    var(--color-purpled),
+    var(--color-blu),
+    var(--color-greeno)
+  );
+  background-size: 180% 180%;
+  animation: gradient-animation 18s ease infinite;
+}
+
+/* Reset focus styles for buttons */
+button:focus {
+  outline: none;
+}
+
+/* Add clean transitions to links */
+a {
+  transition: color 0.2s ease;
+}
