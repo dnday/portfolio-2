@@ -4,7 +4,7 @@
   "outputDirectory": "fe/dist",
   "rewrites": [
     { "source": "/api/(.*)", "destination": "/api/$1" },
-    { "source": "/(.*)", "destination": "/$1" }
+    { "source": "/(.*)", "destination": "/index.html" }
   ],
   "headers": [
     {
