@@ -9,6 +9,7 @@ import Contact from "./contact";
 import Footer from "./footer";
 import ScrollToTop from "./scrollToTop";
 import PageTransition from "./pageTransition"; // Add this import
+import { SpeedInsights } from "@vercel/speed-insights/react";
 
 const Main = () => {
   const location = useLocation();
@@ -18,6 +19,7 @@ const Main = () => {
       <Nav />
       <ScrollToTop />
 
+      <SpeedInsights />
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
           <Route
