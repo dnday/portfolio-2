@@ -12,6 +12,7 @@
   "dependencies": {
     "@tailwindcss/vite": "^4.0.17",
     "@vercel/speed-insights": "^1.2.0",
+    "aos": "^2.3.4",
     "framer-motion": "^12.6.3",
     "react": "^19.0.0",
     "react-bootstrap": "^2.10.9",

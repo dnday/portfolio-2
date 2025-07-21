@@ -1,5 +1,5 @@
 import HeroPic from "../assets/self2.jpg";
-import Resume from "../assets/CV_Marcelinus Dinoglide Yoga Prakoso.pdf";
+import Resume from "../assets/CV_MARCELINUS DINOGLIDE YOGA PRAKOSO.pdf";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
