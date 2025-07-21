@@ -1,5 +1,4 @@
 import HeroPic from "../assets/self2.jpg";
-import Resume from "../assets/CV_MARCELINUS DINOGLIDE YOGA PRAKOSO.pdf";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
@@ -119,7 +118,7 @@ const hero = () => {
           className="flex justify-start"
         >
           <motion.a
-            href={Resume}
+            href="/CV_MARCELINUS_DINOGLIDE_YOGA_PRAKOSO.pdf"
             target="_blank"
             rel="noopener noreferrer"
             whileHover={{ scale: 1.05 }}
