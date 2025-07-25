@@ -14,11 +14,32 @@
     "JavaScript",
     "React",
     "Node.js",
+    "TypeScript",
+    "MongoDB",
+    "Express.js",
+    "Tailwind CSS",
+    "Docker",
+    "Go Language",
     "Full Stack Development",
     "Web Development",
     "Frontend Development",
-    "Backend Development"
+    "Backend Development",
+    "API Development",
+    "Database Design",
+    "Responsive Design"
   ],
+  "hasOccupation": {
+    "@type": "Occupation",
+    "name": "Full Stack Developer",
+    "occupationLocation": {
+      "@type": "Country",
+      "name": "Indonesia"
+    }
+  },
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Freelancer"
+  },
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": "https://marcelinusdino.xyz"
