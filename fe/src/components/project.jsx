@@ -46,7 +46,7 @@ export default function Project() {
         "A website for PIONIR Kesatria 2025, featuring a responsive design, interactive map, and information about PIONIR itself.",
       tech: ["Next.js", "JavaScript", "Tailwind CSS"],
       image: Proj3IMG,
-      link: "pionir-kesatria-2025.vercel.app",
+      link: "https://pionir-kesatria-ft.vercel.app/",
       gradient: "from-greeno to-yellowg",
     },
     {
