@@ -1,5 +1,18 @@
-import { Renderer, Program, Mesh, Color, Triangle } from "ogl";
+import { motion } from "framer-motion";
+import { Color, Mesh, Program, Renderer, Triangle } from "ogl";
 import { useEffect, useRef } from "react";
+import {
+  SiCss3,
+  SiDocker,
+  SiGo,
+  SiHtml5,
+  SiJavascript,
+  SiMongodb,
+  SiNodedotjs,
+  SiPython,
+  SiReact,
+  SiTailwindcss,
+} from "react-icons/si";
 
 const VERT = `#version 300 es
 in vec2 position;
@@ -68,18 +81,18 @@ struct ColorStop {
   float position;
 };
 
-#define COLOR_RAMP(colors, factor, finalColor) {              \
-  int index = 0;                                            \
-  for (int i = 0; i < 2; i++) {                               \
-     ColorStop currentColor = colors[i];                    \
-     bool isInBetween = currentColor.position <= factor;    \
-     index = int(mix(float(index), float(i), float(isInBetween))); \
-  }                                                         \
-  ColorStop currentColor = colors[index];                   \
-  ColorStop nextColor = colors[index + 1];                  \
-  float range = nextColor.position - currentColor.position; \
-  float lerpFactor = (factor - currentColor.position) / range; \
-  finalColor = mix(currentColor.color, nextColor.color, lerpFactor); \
+#define COLOR_RAMP(colors, factor, finalColor) {              \\
+  int index = 0;                                            \\
+  for (int i = 0; i < 2; i++) {                               \\
+     ColorStop currentColor = colors[i];                    \\
+     bool isInBetween = currentColor.position <= factor;    \\
+     index = int(mix(float(index), float(i), float(isInBetween))); \\
+  }                                                         \\
+  ColorStop currentColor = colors[index];                   \\
+  ColorStop nextColor = colors[index + 1];                  \\
+  float range = nextColor.position - currentColor.position; \\
+  float lerpFactor = (factor - currentColor.position) / range; \\
+  finalColor = mix(currentColor.color, nextColor.color, lerpFactor); \\
 }
 
 void main() {
@@ -203,15 +216,320 @@ function Aurora(props) {
   return <div ref={ctnDom} className="w-full h-full" />;
 }
 
+// Floating Icons with improved animations
+const FloatingIcons = () => {
+  const icons = [
+    {
+      Icon: SiReact,
+      color: "text-cyan-400/40",
+      x: "8%",
+      y: "12%",
+      duration: 15,
+      rotateRange: [0, 360],
+      scaleRange: [0.8, 1.3, 0.8],
+    },
+    {
+      Icon: SiJavascript,
+      color: "text-yellow-300/40",
+      x: "88%",
+      y: "18%",
+      duration: 18,
+      rotateRange: [0, -360],
+      scaleRange: [0.9, 1.2, 0.9],
+    },
+    {
+      Icon: SiPython,
+      color: "text-blue-400/40",
+      x: "12%",
+      y: "78%",
+      duration: 20,
+      rotateRange: [0, 360],
+      scaleRange: [0.7, 1.4, 0.7],
+    },
+    {
+      Icon: SiGo,
+      color: "text-cyan-300/40",
+      x: "85%",
+      y: "72%",
+      duration: 16,
+      rotateRange: [0, -360],
+      scaleRange: [0.8, 1.2, 0.8],
+    },
+    {
+      Icon: SiNodedotjs,
+      color: "text-green-400/40",
+      x: "22%",
+      y: "42%",
+      duration: 22,
+      rotateRange: [0, 360],
+      scaleRange: [0.9, 1.3, 0.9],
+    },
+    {
+      Icon: SiMongodb,
+      color: "text-green-500/40",
+      x: "78%",
+      y: "48%",
+      duration: 19,
+      rotateRange: [0, -360],
+      scaleRange: [0.8, 1.25, 0.8],
+    },
+    {
+      Icon: SiHtml5,
+      color: "text-orange-400/40",
+      x: "48%",
+      y: "8%",
+      duration: 17,
+      rotateRange: [0, 360],
+      scaleRange: [0.85, 1.3, 0.85],
+    },
+    {
+      Icon: SiCss3,
+      color: "text-blue-500/40",
+      x: "52%",
+      y: "88%",
+      duration: 21,
+      rotateRange: [0, -360],
+      scaleRange: [0.9, 1.2, 0.9],
+    },
+    {
+      Icon: SiTailwindcss,
+      color: "text-teal-400/40",
+      x: "5%",
+      y: "50%",
+      duration: 23,
+      rotateRange: [0, 360],
+      scaleRange: [0.7, 1.35, 0.7],
+    },
+    {
+      Icon: SiDocker,
+      color: "text-blue-400/40",
+      x: "92%",
+      y: "45%",
+      duration: 18,
+      rotateRange: [0, -360],
+      scaleRange: [0.8, 1.28, 0.8],
+    },
+  ];
+
+  return (
+    <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-60">
+      {icons.map((item, index) => (
+        <motion.div
+          key={index}
+          initial={{ opacity: 0, scale: 0, rotate: 0 }}
+          animate={{
+            opacity: [0, 0.3, 0.5, 0.3, 0],
+            scale: item.scaleRange,
+            y: [0, -30, -15, -25, 0],
+            x: [0, 10, -5, 8, 0],
+            rotate: item.rotateRange,
+          }}
+          transition={{
+            duration: item.duration,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: index * 0.8,
+          }}
+          className="absolute"
+          style={{ left: item.x, top: item.y }}
+        >
+          <item.Icon
+            className={`${item.color} text-3xl sm:text-4xl lg:text-5xl xl:text-6xl drop-shadow-lg`}
+          />
+        </motion.div>
+      ))}
+    </div>
+  );
+};
+
+// Floating Particles
+const FloatingParticles = () => {
+  const particles = Array.from({ length: 15 }, (_, i) => ({
+    id: i,
+    size: Math.random() * 5 + 3,
+    x: Math.random() * 100,
+    y: Math.random() * 100,
+    duration: Math.random() * 10 + 15,
+    delay: Math.random() * 5,
+  }));
+
+  return (
+    <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-40">
+      {particles.map((particle) => (
+        <motion.div
+          key={particle.id}
+          initial={{ opacity: 0 }}
+          animate={{
+            opacity: [0, 0.5, 0.8, 0.3, 0],
+            y: [0, -80, -150, -220],
+            x: [0, Math.random() * 40 - 20, Math.random() * 60 - 30],
+            scale: [0.3, 0.8, 1.1, 0.6],
+          }}
+          transition={{
+            duration: particle.duration,
+            repeat: Infinity,
+            delay: particle.delay,
+            ease: "easeOut",
+          }}
+          className="absolute rounded-full blur-sm"
+          style={{
+            left: `${particle.x}%`,
+            top: `${particle.y}%`,
+            width: `${particle.size}px`,
+            height: `${particle.size}px`,
+            background: `radial-gradient(circle, rgba(255, 193, 7, 0.4), rgba(156, 39, 176, 0.2))`,
+          }}
+        />
+      ))}
+    </div>
+  );
+};
+
+// Floating Geometric Shapes
+const FloatingShapes = () => {
+  const shapes = [
+    {
+      type: "square",
+      x: "15%",
+      y: "20%",
+      size: 40,
+      rotation: 45,
+      color: "rgba(255, 193, 7, 0.15)",
+    },
+    {
+      type: "circle",
+      x: "80%",
+      y: "25%",
+      size: 30,
+      rotation: 0,
+      color: "rgba(156, 39, 176, 0.15)",
+    },
+    {
+      type: "triangle",
+      x: "25%",
+      y: "70%",
+      size: 35,
+      rotation: 120,
+      color: "rgba(33, 150, 243, 0.15)",
+    },
+    {
+      type: "square",
+      x: "75%",
+      y: "65%",
+      size: 25,
+      rotation: 0,
+      color: "rgba(76, 175, 80, 0.15)",
+    },
+  ];
+
+  const getClipPath = (type) => {
+    if (type === "triangle") return "polygon(50% 0%, 0% 100%, 100% 100%)";
+    return "none";
+  };
+
+  return (
+    <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-30">
+      {shapes.map((shape, index) => (
+        <motion.div
+          key={index}
+          initial={{ opacity: 0, scale: 0, rotate: shape.rotation }}
+          animate={{
+            opacity: [0, 0.4, 0.6, 0.4, 0],
+            scale: [0.8, 1.2, 1, 1.3, 0.8],
+            rotate: [
+              shape.rotation,
+              shape.rotation + 180,
+              shape.rotation + 360,
+            ],
+            y: [0, -30, -15, -25, 0],
+          }}
+          transition={{
+            duration: 12 + index * 2,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: index * 1,
+          }}
+          className="absolute backdrop-blur-sm border border-white/10"
+          style={{
+            left: shape.x,
+            top: shape.y,
+            width: `${shape.size}px`,
+            height: `${shape.size}px`,
+            backgroundColor: shape.color,
+            borderRadius: shape.type === "circle" ? "50%" : "8px",
+            clipPath: getClipPath(shape.type),
+          }}
+        />
+      ))}
+    </div>
+  );
+};
+
+// Floating Code Symbols
+const FloatingCodeSymbols = () => {
+  const symbols = [
+    { text: "</>", x: "12%", y: "30%", delay: 0 },
+    { text: "{ }", x: "88%", y: "35%", delay: 1 },
+    { text: "[ ]", x: "18%", y: "60%", delay: 2 },
+    { text: "=>", x: "82%", y: "58%", delay: 1.5 },
+  ];
+
+  return (
+    <div className="absolute inset-0 pointer-events-none overflow-hidden hidden md:block opacity-25">
+      {symbols.map((symbol, index) => (
+        <motion.div
+          key={index}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{
+            opacity: [0, 0.3, 0.5, 0.3, 0],
+            y: [0, -20, -10, -18, 0],
+            rotate: [-5, 5, -3, 4, -5],
+            scale: [0.9, 1.1, 1, 1.15, 0.9],
+          }}
+          transition={{
+            duration: 10 + index * 1.5,
+            repeat: Infinity,
+            delay: symbol.delay,
+            ease: "easeInOut",
+          }}
+          className="absolute text-yellowg/30 font-mono text-2xl font-bold"
+          style={{
+            left: symbol.x,
+            top: symbol.y,
+          }}
+        >
+          {symbol.text}
+        </motion.div>
+      ))}
+    </div>
+  );
+};
+
+// Main Background Component with Aurora + All Floating Elements
 export default function Background() {
   return (
-    <div className="fixed inset-0 w-full h-screen -z-10 bg-black">
-      <Aurora
-        colorStops={["#682d63", "#414288", "#5fb49c"]}
-        amplitude={1.5}
-        blend={0.6}
-        speed={0.8}
-      />
+    <div className="fixed inset-0 -z-10 pointer-events-none">
+      {/* Aurora Background */}
+      <div className="absolute inset-0 w-full h-screen bg-black">
+        <Aurora
+          colorStops={["#682d63", "#414288", "#5fb49c"]}
+          amplitude={1.5}
+          blend={0.6}
+          speed={0.8}
+        />
+      </div>
+
+      {/* Floating Tech Icons */}
+      <FloatingIcons />
+
+      {/* Floating Particles */}
+      <FloatingParticles />
+
+      {/* Floating Shapes */}
+      <FloatingShapes />
+
+      {/* Floating Code Symbols */}
+      <FloatingCodeSymbols />
     </div>
   );
 }
