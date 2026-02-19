@@ -8,10 +8,20 @@ import "aos/dist/aos.css";
 const About = () => {
   const resumeExperience = [
     {
+      organization: "Gamantaray UGM",
+      position: "Software Programmer",
+      tasks: [
+        "Developed a web-dashboard for monitoring Autonomous Surface Vehicle (ASV) and vision from the sensor and camera.",
+      ],
+      startDate: "December 2025",
+      endDate: "Present",
+    },
+    {
       organization: "PIONIR Kesatria",
       position: "HumIT Staff (Website Subdivision)",
       tasks: [
         "Built a responsive and fast website using Next.js and TailwindCSS. Developed interactive UI components with React and managed code versioning with Git.",
+        "The website has been accessed by over 1000 people."
       ],
       startDate: "May 2025",
       endDate: "Present",
@@ -50,14 +60,14 @@ const About = () => {
         "Managing robotic competition in Technocorner especially in Line Follower",
       ],
       startDate: "October 2024",
-      endDate: "Present",
+      endDate: "II",
     },
     {
       organization: "Misa Kampus UGM",
       position: "Staff of Human Resources and Development",
       tasks: ["Engaged in staff recruitment and development programs"],
       startDate: "September 2024",
-      endDate: "Present",
+      endDate: "February 2026",
     },
   ];
 
