@@ -499,7 +499,7 @@ const About = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 1.2, duration: 0.8 }}
                   >
-                    I'm a first-year Information Engineering student at
+                    I'm a sophomore Information Engineering student at
                     Universitas Gadjah Mada.
                   </motion.span>
                   <br />
