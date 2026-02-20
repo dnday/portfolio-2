@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
-import HeroPic from "../assets/self2.jpg";
-import { motion, useAnimation } from "framer-motion";
-import { useInView } from "react-intersection-observer";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { motion, useAnimation } from "framer-motion";
+import { useEffect } from "react";
+import { useInView } from "react-intersection-observer";
+import HeroPic from "../assets/self2.jpg";
 
 const About = () => {
   const resumeExperience = [
@@ -11,63 +11,70 @@ const About = () => {
       organization: "Gamantaray UGM",
       position: "Software Programmer",
       tasks: [
-        "Developed a web-dashboard for monitoring Autonomous Surface Vehicle (ASV) and vision from the sensor and camera.",
+        "Developed a web-based dashboard to monitor Autonomous Surface Vehicle (ASV) telemetry data and real-time vision output from onboard sensors and cameras.",
+        "Integrated sensor data streams for visualization and system diagnostics.",
+        "Contributed to system reliability and performance optimization for real-time monitoring.",
       ],
       startDate: "December 2025",
+      endDate: "Present",
+    },
+    {
+      organization: "FindIT!",
+      position: "CTF Technical Staff",
+      tasks: [
+        "Contributed to organizing Capture The Flag (CTF) competitions.",
+        "Assisted in challenge preparation and event technical coordination.",
+      ],
+      startDate: "October 2025",
+      endDate: "Present",
+    },
+    {
+      organization:
+        "Keluarga Mahasiswa Teknik Elektro dan Teknologi Informasi FT UGM",
+      position: "Workshop Division Staff",
+      tasks: [
+        "Organized training sessions and technical bootcamps to support academic and non-academic learning activities.",
+      ],
+      startDate: "January 2025",
       endDate: "Present",
     },
     {
       organization: "PIONIR Kesatria",
       position: "HumIT Staff (Website Subdivision)",
       tasks: [
-        "Built a responsive and fast website using Next.js and TailwindCSS. Developed interactive UI components with React and managed code versioning with Git.",
-        "The website has been accessed by over 1000 people."
+        "Built a responsive and high-performance event website using Next.js and TailwindCSS.",
+        "Developed interactive UI components with React and managed version control using Git.",
+        "Successfully deployed the website, reaching 500+ users during the event period.",
       ],
       startDate: "May 2025",
-      endDate: "Present",
+      endDate: "August 2025",
     },
     {
-      organization: "KOMATIK UGM",
-      position: "Member of IoT Gama",
-      tasks: [
-        "Learn about IoT (sensors, microcontroller, programming language, LoRa) and its application to solve real-world problems",
-      ],
-      startDate: "February 2025",
-      endDate: "Present",
-    },
-    {
-      organization: "KMTETI",
-      position: "Workshop Staff",
-      tasks: [
-        "Organize training sessions and boot camps related to technical skills in support of classroom and off-site lectures",
-      ],
-      startDate: "January 2025",
-      endDate: "Present",
-    },
-    {
-      organization: "FindIT! UGM",
-      position: "Logistic Division Staff",
-      tasks: [
-        "Managing needs of the event including property, korsa/workshirt, and consumption",
-      ],
-      startDate: "October 2024",
-      endDate: "Present",
-    },
-    {
-      organization: "Technocorner UGM",
+      organization: "Technocorner",
       position: "Robotic Technical Staff",
       tasks: [
-        "Managing robotic competition in Technocorner especially in Line Follower",
+        "Managed robotic competitions, particularly in the Line Follower category.",
       ],
       startDate: "October 2024",
-      endDate: "II",
+      endDate: "June 2025",
+    },
+    {
+      organization: "FindIT!",
+      position: "Logistics and Equipment Division Staff",
+      tasks: [
+        "Managed event logistics including properties, merchandise, and consumption.",
+      ],
+      startDate: "October 2024",
+      endDate: "May 2025",
     },
     {
       organization: "Misa Kampus UGM",
-      position: "Staff of Human Resources and Development",
-      tasks: ["Engaged in staff recruitment and development programs"],
+      position: "Human Resources Staff",
+      tasks: [
+        "Managed internal development programs, organizational visits, and gathering events.",
+      ],
       startDate: "September 2024",
-      endDate: "February 2026",
+      endDate: "February 2025",
     },
   ];
 
