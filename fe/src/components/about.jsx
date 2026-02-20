@@ -39,6 +39,15 @@ const About = () => {
       endDate: "Present",
     },
     {
+      organization: "Misa Kampus UGM",
+      position: "Human Resources Staff",
+      tasks: [
+        "Managed internal development programs, organizational visits, and gathering events.",
+      ],
+      startDate: "September 2024",
+      endDate: "February 2026",
+    },
+    {
       organization: "PIONIR Kesatria",
       position: "HumIT Staff (Website Subdivision)",
       tasks: [
@@ -66,15 +75,6 @@ const About = () => {
       ],
       startDate: "October 2024",
       endDate: "May 2025",
-    },
-    {
-      organization: "Misa Kampus UGM",
-      position: "Human Resources Staff",
-      tasks: [
-        "Managed internal development programs, organizational visits, and gathering events.",
-      ],
-      startDate: "September 2024",
-      endDate: "February 2025",
     },
   ];
 

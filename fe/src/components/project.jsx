@@ -7,6 +7,7 @@ import Proj2IMG from "../assets/Project2.png";
 import Proj3IMG from "../assets/Project3.png";
 import Proj4IMG from "../assets/Project4.png";
 import Proj5IMG from "../assets/Project5.png";
+import Proj6IMG from "../assets/Project6.png";
 
 export default function Project() {
   useEffect(() => {
@@ -30,7 +31,7 @@ export default function Project() {
       tech: ["Python", "Tweepy", "IMDB API"],
       image: Proj1IMG,
       link: "https://github.com/dnday/movie-twitter-bot",
-      gradient: "from-yellowg to-purpled",
+      gradient: "from-slate-800 to-slate-700",
     },
     {
       id: 1,
@@ -40,7 +41,7 @@ export default function Project() {
       tech: ["Golang", "MongoDB", "REST API"],
       image: Proj2IMG,
       link: "https://github.com/dnday/golangproject",
-      gradient: "from-yellowg to-blu",
+      gradient: "from-slate-900 to-slate-800",
     },
     {
       id: 3,
@@ -50,7 +51,7 @@ export default function Project() {
       tech: ["Next.js", "JavaScript", "Tailwind CSS"],
       image: Proj3IMG,
       link: "https://pionir-kesatria-ft.vercel.app/",
-      gradient: "from-greeno to-yellowg",
+      gradient: "from-gray-800 to-slate-800",
     },
     {
       id: 4,
@@ -60,7 +61,7 @@ export default function Project() {
       tech: ["React", "Tailwind CSS", "Framer Motion"],
       image: Proj4IMG,
       link: "https://ai-sum-1jmt.vercel.app/",
-      gradient: "from-blu to-greeno",
+      gradient: "from-slate-800 to-zinc-800",
     },
     {
       id: 5,
@@ -70,6 +71,25 @@ export default function Project() {
       tech: ["Python", "TensorFlow", "OpenCV"],
       image: Proj5IMG,
       link: "https://github.com/dnday/ggmt",
+      gradient: "from-zinc-800 to-slate-800",
+    },
+    {
+      id: 6,
+      title: "RecruitPro — AI-Powered Recruitment Platform",
+      description:
+        "Engineered an intelligent recruitment solution leveraging AI for automated resume screening and assessment. Architected comprehensive user experience flow spanning from resume upload through evaluation results with seamless backend integration.",
+      tech: [
+        "Next.js",
+        "Tailwind CSS",
+        "Supabase",
+        "AI API",
+        "NodeMailer",
+        "NestJS",
+        "JWT",
+      ],
+      image: Proj6IMG,
+      link: "https://gdgoc-1.vercel.app",
+      gradient: "from-gray-800 to-zinc-800",
     },
   ];
 
