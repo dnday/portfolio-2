@@ -178,7 +178,7 @@ const hero = () => {
           className="flex flex-wrap justify-center gap-4 sm:gap-6 mt-12 sm:mt-16"
         >
           <motion.a
-            href="#projects"
+            href="projects"
             whileHover={{ scale: 1.05, y: -2 }}
             whileTap={{ scale: 0.95 }}
             className="group relative px-8 py-3 sm:px-10 sm:py-4 rounded-full overflow-hidden backdrop-blur-xl bg-yellowg/90 hover:bg-yellowg border border-yellowg/50 shadow-lg hover:shadow-yellowg/30 transition-all duration-300"
@@ -190,7 +190,7 @@ const hero = () => {
           </motion.a>
 
           <motion.a
-            href="#contact"
+            href="contact"
             whileHover={{ scale: 1.05, y: -2 }}
             whileTap={{ scale: 0.95 }}
             className="group relative px-8 py-3 sm:px-10 sm:py-4 rounded-full overflow-hidden backdrop-blur-xl bg-white/[0.03] hover:bg-white/[0.08] border border-white/[0.1] hover:border-yellowg/[0.3] transition-all duration-300 shadow-lg"
