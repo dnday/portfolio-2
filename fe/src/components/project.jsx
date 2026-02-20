@@ -6,6 +6,7 @@ import Proj1IMG from "../assets/Project1.png";
 import Proj2IMG from "../assets/Project2.png";
 import Proj3IMG from "../assets/Project3.png";
 import Proj4IMG from "../assets/Project4.png";
+import Proj5IMG from "../assets/Project5.png";
 
 export default function Project() {
   useEffect(() => {
@@ -22,7 +23,7 @@ export default function Project() {
 
   const projects = [
     {
-      id: 1,
+      id: 2,
       title: "Movie Recommendation Bot Twitter",
       description:
         "An intelligent movie recommendation bot for Twitter that suggests movies based on user preferences using IMDB data.",
@@ -32,7 +33,7 @@ export default function Project() {
       gradient: "from-yellowg to-purpled",
     },
     {
-      id: 2,
+      id: 1,
       title: "Book Management System",
       description:
         "A comprehensive backend system for managing book inventory and employee records with RESTful architecture.",
@@ -60,6 +61,15 @@ export default function Project() {
       image: Proj4IMG,
       link: "https://ai-sum-1jmt.vercel.app/",
       gradient: "from-blu to-greeno",
+    },
+    {
+      id: 5,
+      title: "Computer Vision Object Detection",
+      description:
+        "A computer vision project that detects and classifies objects in images using deep learning models like YOLO or Faster R-CNN.",
+      tech: ["Python", "TensorFlow", "OpenCV"],
+      image: Proj5IMG,
+      link: "https://github.com/dnday/ggmt",
     },
   ];
 
