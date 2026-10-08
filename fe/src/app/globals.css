@@ -914,3 +914,73 @@ html[data-theme-switch] header {
     transform: rotate(0.4deg) translateY(-2px);
   }
 }
+
+/* Skill tiles (LogoGrid in components/fx.jsx): one-color logos that take their brand color on hover.
+   Very dark brand colors fall back to ink on the night chart. */
+.skill-tile {
+  --brand-on: var(--brand);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  height: 100%;
+  border: 1px solid color-mix(in oklab, var(--color-ink) 20%, transparent);
+  padding: 16px 8px 12px;
+  background: var(--color-paper);
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  text-align: center;
+}
+
+html[data-theme="dark"] .skill-tile[data-dim] {
+  --brand-on: var(--color-ink);
+}
+
+.skill-tile svg {
+  width: 30px;
+  height: 30px;
+  fill: currentColor;
+}
+
+.skill-mono {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border: 1.5px solid currentColor;
+  border-radius: 50%;
+  font-size: 0.625rem;
+  font-weight: 700;
+}
+
+.skill-tile:hover {
+  border-color: var(--brand-on);
+  background: color-mix(in oklab, var(--brand-on) 8%, var(--color-paper));
+}
+
+.skill-tile:hover :is(svg, .skill-mono) {
+  color: var(--brand-on);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .skill-tile {
+    transition:
+      transform 0.5s var(--ease-spring),
+      border-color 0.3s ease,
+      background-color 0.3s ease;
+  }
+
+  .skill-tile :is(svg, .skill-mono) {
+    transition:
+      transform 0.6s var(--ease-spring),
+      color 0.3s ease;
+  }
+
+  .skill-tile:hover {
+    transform: translateY(-5px);
+  }
+
+  .skill-tile:hover :is(svg, .skill-mono) {
+    transform: scale(1.2) rotate(-8deg);
+  }
+}

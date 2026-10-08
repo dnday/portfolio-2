@@ -213,25 +213,6 @@ const ITEM = {
   },
 };
 
-// Items pop in one after another when the list comes into view.
-export function StaggerList({ items, className }) {
-  return (
-    <motion.ul
-      className={className}
-      variants={LIST}
-      initial="hidden"
-      whileInView="shown"
-      viewport={{ once: true, margin: "0px 0px -10% 0px" }}
-    >
-      {items.map((item) => (
-        <motion.li key={item} variants={ITEM}>
-          {item}
-        </motion.li>
-      ))}
-    </motion.ul>
-  );
-}
-
 // Turns with the page scroll: compass roses.
 export function ScrollSpin({ as = "g", turn = 0.2, className, children }) {
   const Tag = TAGS[as];
@@ -438,5 +419,40 @@ function StackCard({ i, total, progress, reduce, children }) {
         {children}
       </motion.div>
     </div>
+  );
+}
+
+// Skills as logo tiles that pop in one after another. Each tile carries its brand color in --brand;
+// globals.css shows it on hover.
+export function LogoGrid({ items }) {
+  return (
+    <motion.ul
+      className="grid grid-cols-[repeat(auto-fill,minmax(104px,1fr))] gap-3"
+      variants={LIST}
+      initial="hidden"
+      whileInView="shown"
+      viewport={{ once: true, margin: "0px 0px -10% 0px" }}
+    >
+      {items.map(({ name, path, hex, dim }) => (
+        <motion.li key={name} variants={ITEM}>
+          <div
+            className="skill-tile"
+            style={{ "--brand": `#${hex}` }}
+            data-dim={dim || undefined}
+          >
+            {path ? (
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d={path} />
+              </svg>
+            ) : (
+              <span className="skill-mono" aria-hidden="true">
+                {name}
+              </span>
+            )}
+            <span>{name}</span>
+          </div>
+        </motion.li>
+      ))}
+    </motion.ul>
   );
 }
