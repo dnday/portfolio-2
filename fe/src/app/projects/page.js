@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { PageHead } from "../../components/chart";
-import { projects } from "../../content";
+import { projects, slugify } from "../../content";
 import { Parallax, Reveal, Stack, Tilt } from "../../components/fx";
 import PageTransition from "../../components/pageTransition";
 
@@ -62,6 +62,7 @@ export default function ProjectsPage() {
             const flip = i % 2 === 1;
             return (
               <article
+                id={slugify(project.title)}
                 key={project.title}
                 className={`grid items-center gap-6 border border-ink bg-paper p-5 sm:p-8 lg:min-h-[440px] lg:gap-12 lg:p-10 ${flip ? "lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]" : "lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)]"}`}
               >
@@ -107,7 +108,7 @@ export default function ProjectsPage() {
         </Reveal>
         <ul className="mt-8 grid gap-x-14 gap-y-12 md:grid-cols-2">
           {rest.map((project, i) => (
-            <Reveal as="li" key={project.title} delay={(i % 2) * 0.12}>
+            <Reveal as="li" key={project.title} id={slugify(project.title)} delay={(i % 2) * 0.12}>
               <ProjectText project={project} />
             </Reveal>
           ))}

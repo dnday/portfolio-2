@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import logo from "../assets/logo.webp";
+import CommandPalette from "./commandPalette";
 import NavLinks from "./navLinks";
 import ThemeAnchor from "./themeAnchor";
 
@@ -15,6 +16,7 @@ export default function Nav() {
         <span className="font-serif text-2xl italic">Marcel</span>
       </Link>
       <NavLinks />
+      <CommandPalette />
       <ThemeAnchor />
     </header>
   );

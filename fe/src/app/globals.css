@@ -797,3 +797,120 @@ html[data-theme-switch]::view-transition-new(root) {
 html[data-theme-switch] header {
   view-transition-name: none !important;
 }
+
+/* Now playing: three bars bounce while a song is actually playing (components/nowPlaying.jsx) */
+.eq {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 10px;
+}
+
+.eq > span {
+  width: 2px;
+  height: 100%;
+  background: var(--color-purple);
+  transform-origin: bottom;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .eq > span {
+    animation: eq 0.9s ease-in-out infinite alternate;
+  }
+
+  .eq > span:nth-child(2) {
+    animation-delay: -0.3s;
+  }
+
+  .eq > span:nth-child(3) {
+    animation-delay: -0.6s;
+  }
+}
+
+@keyframes eq {
+  from {
+    transform: scaleY(0.25);
+  }
+}
+
+/* Command palette (components/commandPalette.jsx) */
+.cmdk {
+  width: min(640px, calc(100vw - 32px));
+  margin: 14vh auto auto;
+  padding: 0;
+  border: 1px solid var(--color-ink);
+  outline: 2px solid var(--color-ink);
+  outline-offset: 4px;
+  background: var(--color-paper);
+  color: var(--color-ink);
+}
+
+.cmdk::backdrop {
+  background: rgb(0 0 0 / 0.35);
+}
+
+/* Small message at the bottom of the screen: copied link, easter eggs */
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 28px;
+  z-index: 90;
+  translate: -50% 0;
+  border: 1px solid var(--color-ink);
+  background: var(--color-paper);
+  padding: 8px 14px;
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  white-space: nowrap;
+}
+
+/* Easter egg swell (components/easterEgg.jsx) */
+.swell {
+  position: fixed;
+  inset: auto 0 0;
+  z-index: 85;
+  width: 100%;
+  height: 30vh;
+  pointer-events: none;
+  transform: translateY(100%);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .cmdk[open] {
+    animation: rise 0.45s var(--ease-glide);
+  }
+
+  .toast {
+    animation: rise 0.5s var(--ease-glide);
+  }
+
+  .swell {
+    animation: swell 3s ease-in-out;
+  }
+
+  .rocking :is(header, main, footer) {
+    animation: rock 3s ease-in-out;
+  }
+}
+
+@keyframes swell {
+  40%,
+  60% {
+    transform: translateY(15%);
+  }
+}
+
+@keyframes rock {
+  15% {
+    transform: rotate(-1.2deg) translateY(6px);
+  }
+  35% {
+    transform: rotate(1deg) translateY(-4px);
+  }
+  55% {
+    transform: rotate(-0.7deg) translateY(4px);
+  }
+  75% {
+    transform: rotate(0.4deg) translateY(-2px);
+  }
+}

@@ -3,6 +3,7 @@ import Image from "next/image";
 import { B612, Newsreader } from "next/font/google";
 import logo from "../assets/logo.webp";
 import heroPic from "../assets/self2.jpg";
+import EasterEgg from "../components/easterEgg";
 import Footer from "../components/footer";
 import { Cursor, MotionProvider, ScrollProgress } from "../components/fx";
 import Motion from "../components/motion";
@@ -105,6 +106,7 @@ export default function RootLayout({ children }) {
         </MotionProvider>
         <NowPlaying />
         <Motion />
+        <EasterEgg />
         <SpeedInsights />
       </body>
     </html>

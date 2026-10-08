@@ -41,7 +41,16 @@ export default function NowPlaying() {
     >
       {art && <img src={art} alt="" width="40" height="40" className="size-10 shrink-0" />}
       <span className="min-w-0 font-sans text-xs leading-snug">
-        <span className="block text-pencil">{live ? "Listening now" : "Last played"}</span>
+        <span className="flex items-center gap-1.5 text-pencil">
+          {live && (
+            <span className="eq" aria-hidden="true">
+              <span />
+              <span />
+              <span />
+            </span>
+          )}
+          {live ? "Listening now" : "Last played"}
+        </span>
         <span className="block truncate">{track.name}</span>
         <span className="block truncate text-pencil">{artist}</span>
         <span className="sr-only">(search on Spotify, opens in a new tab)</span>

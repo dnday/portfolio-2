@@ -6,6 +6,9 @@ import recruitShot from "./assets/Project6.webp";
 
 export const SITE_URL = "https://marcelinusdino.vercel.app";
 
+// URL fragment for a project, e.g. /projects#instride
+export const slugify = (title) => title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+
 export const profile = {
   name: "Marcelinus Dinoglide Yoga Prakoso",
   role: "Software engineer and Information Engineering student at Universitas Gadjah Mada.",

@@ -19,7 +19,7 @@ function subscribe(onChange) {
 
 const isDark = () => document.documentElement.dataset.theme === "dark";
 
-function switchTheme(origin) {
+export function switchTheme(origin) {
   const root = document.documentElement;
   const next = isDark() ? "light" : "dark";
   const apply = () => {
@@ -73,7 +73,7 @@ export default function ThemeAnchor() {
   }
 
   return (
-    <div className="relative order-2 h-11 w-8 sm:order-3">
+    <div className="relative order-2 h-11 w-8 sm:order-4">
       <motion.span
         aria-hidden="true"
         className="absolute left-1/2 w-[1.5px] -translate-x-1/2 bg-ink"
