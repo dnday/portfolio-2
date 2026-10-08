@@ -474,13 +474,13 @@ a:hover > .link-draw::after,
     transition: border-color 0.3s ease, transform 0.5s var(--ease-spring);
   }
 
-  .logo-rose {
+  .logo-mark {
     transition: transform 0.7s var(--ease-spring);
   }
 
   @media (hover: hover) {
-    a:hover > .logo-rose {
-      transform: rotate(90deg);
+    a:hover > .logo-mark {
+      transform: rotate(-14deg) scale(1.15);
     }
 
     .row:hover > *,
@@ -732,10 +732,9 @@ a:hover > .link-draw::after,
   animation: intro-out 1s var(--ease-glide) 1.6s forwards;
 }
 
-.intro-rose {
+.intro-logo {
   width: 96px;
   height: 96px;
-  color: var(--color-purple);
   animation: rose-swing 1.6s ease-in-out both;
 }
 

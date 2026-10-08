@@ -1,7 +1,8 @@
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import Image from "next/image";
 import { B612, Newsreader } from "next/font/google";
+import logo from "../assets/logo.webp";
 import heroPic from "../assets/self2.jpg";
-import { CompassRose } from "../components/chart";
 import Footer from "../components/footer";
 import { Cursor, MotionProvider, ScrollProgress } from "../components/fx";
 import Motion from "../components/motion";
@@ -86,7 +87,7 @@ export default function RootLayout({ children }) {
       </head>
       <body>
         <div className="intro" aria-hidden="true">
-          <CompassRose className="intro-rose" />
+          <Image src={logo} alt="" width={96} height={96} className="intro-logo" />
           <p className="intro-name font-serif italic">Marcel</p>
           <p className="intro-coords font-sans text-sm text-pencil">{profile.coords}</p>
           <span className="intro-bar scale-bar" />
