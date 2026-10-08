@@ -5,7 +5,7 @@ import logo from "../assets/logo.webp";
 import heroPic from "../assets/self2.jpg";
 import EasterEgg from "../components/easterEgg";
 import Footer from "../components/footer";
-import { Cursor, MotionProvider, ScrollProgress } from "../components/fx";
+import { MotionProvider, ScrollProgress } from "../components/fx";
 import Motion from "../components/motion";
 import Nav from "../components/nav";
 import NowPlaying from "../components/nowPlaying";
@@ -102,7 +102,6 @@ export default function RootLayout({ children }) {
           <Nav />
           <main id="main">{children}</main>
           <Footer />
-          <Cursor />
         </MotionProvider>
         <NowPlaying />
         <Motion />

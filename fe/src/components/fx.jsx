@@ -281,32 +281,6 @@ export function ScrollProgress() {
   );
 }
 
-// A ring that trails the mouse and grows over anything clickable. Mouse only.
-export function Cursor() {
-  const reduce = useReducedMotion();
-  const x = useSpring(-100, { stiffness: 500, damping: 40 });
-  const y = useSpring(-100, { stiffness: 500, damping: 40 });
-  const scale = useSpring(1, SPRING);
-
-  useEffect(() => {
-    if (reduce || !matchMedia("(pointer: fine)").matches) return;
-    const move = (e) => {
-      x.set(e.clientX);
-      y.set(e.clientY);
-      scale.set(e.target.closest?.("a, button, input, textarea") ? 2.2 : 1);
-    };
-    addEventListener("pointermove", move, { passive: true });
-    return () => removeEventListener("pointermove", move);
-  }, [reduce, x, y, scale]);
-
-  return (
-    <motion.div
-      aria-hidden="true"
-      className="cursor-ring"
-      style={{ x, y, scale }}
-    />
-  );
-}
 
 const wrap = (min, max, v) =>
   ((((v - min) % (max - min)) + (max - min)) % (max - min)) + min;
