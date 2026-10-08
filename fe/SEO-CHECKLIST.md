@@ -3,7 +3,7 @@
 ## 1. Verifikasi Domain
 
 - Buka: https://search.google.com/search-console/
-- Tambahkan property: `marcelinusdino.xyz`
+- Tambahkan property: `marcelinusdino.vercel.app`
 - Pilih metode verifikasi: HTML tag (sudah ada di index.html)
 
 ## 2. Submit Sitemap
@@ -15,11 +15,11 @@
 ## 3. URL yang Harus Di-submit Manual
 
 ```
-https://marcelinusdino.xyz/
-https://marcelinusdino.xyz/skills
-https://marcelinusdino.xyz/projects
-https://marcelinusdino.xyz/about
-https://marcelinusdino.xyz/contact
+https://marcelinusdino.vercel.app/
+https://marcelinusdino.vercel.app/skills
+https://marcelinusdino.vercel.app/projects
+https://marcelinusdino.vercel.app/about
+https://marcelinusdino.vercel.app/contact
 ```
 
 ## 4. Test Tools

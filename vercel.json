@@ -1,10 +1,10 @@
 {
   "version": 2,
   "buildCommand": "cd fe && npm install && npm run build",
-  "outputDirectory": "fe/dist",
+  "outputDirectory": "fe/out",
+  "cleanUrls": true,
   "rewrites": [
-    { "source": "/api/(.*)", "destination": "/api/$1" },
-    { "source": "/(.*)", "destination": "/index.html" }
+    { "source": "/api/(.*)", "destination": "/api/$1" }
   ],
   "headers": [
     {

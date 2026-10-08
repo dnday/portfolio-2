@@ -5,8 +5,8 @@ const pingSearchEngines = async () => {
   console.log("🚀 Pinging search engines...");
 
   const urls = [
-    "https://www.google.com/ping?sitemap=https://marcelinusdino.xyz/sitemap.xml",
-    "https://www.bing.com/ping?sitemap=https://marcelinusdino.xyz/sitemap.xml",
+    "https://www.google.com/ping?sitemap=https://marcelinusdino.vercel.app/sitemap.xml",
+    "https://www.bing.com/ping?sitemap=https://marcelinusdino.vercel.app/sitemap.xml",
   ];
 
   const pingUrl = (url, engine) => {
@@ -26,7 +26,7 @@ const pingSearchEngines = async () => {
   await Promise.all([pingUrl(urls[0], "Google"), pingUrl(urls[1], "Bing")]);
 
   console.log("✅ Search engines notified!");
-  console.log("🔗 Sitemap: https://marcelinusdino.xyz/sitemap.xml");
+  console.log("🔗 Sitemap: https://marcelinusdino.vercel.app/sitemap.xml");
 };
 
 pingSearchEngines();

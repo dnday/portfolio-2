@@ -1,76 +1,49 @@
-import { motion } from "framer-motion";
-import { BsGithub, BsLinkedin, BsTwitter } from "react-icons/bs";
+import { profile } from "../content";
+
+// Rendered at build time, so this is the date the site was last published.
+const edition = new Intl.DateTimeFormat("en", { month: "long", year: "numeric" }).format(new Date());
 
 export default function Footer() {
-  const socialLinks = [
-    {
-      name: "Github",
-      url: "https://github.com/dnday",
-      icon: BsGithub,
-    },
-    {
-      name: "Twitter",
-      url: "https://twitter.com/marcel9994",
-      icon: BsTwitter,
-    },
-    {
-      name: "LinkedIn",
-      url: "https://linkedin.com/in/marcelinus-dinoglide-yoga-prakoso",
-      icon: BsLinkedin,
-    },
-  ];
-
   return (
-    <footer className="relative text-white py-16 px-4 overflow-hidden">
-      {/* Decorative background */}
-      <div className="absolute inset-0 bg-gradient-to-t from-yellowg/5 to-transparent"></div>
-
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="max-w-4xl mx-auto relative z-10"
-      >
-        {/* Social Links */}
-        <div className="flex justify-center gap-4 mb-8">
-          {socialLinks.map((network) => {
-            const Icon = network.icon;
-            return (
-              <motion.a
-                key={network.name}
-                href={network.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ y: -3, scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="backdrop-blur-xl bg-white/[0.03] hover:bg-white/[0.06] border border-white/[0.1] hover:border-yellowg/[0.3] rounded-xl p-3 transition-all duration-300 group"
-                aria-label={network.name}
-              >
-                <Icon className="w-5 h-5 text-white/70 group-hover:text-yellowg transition-colors" />
-              </motion.a>
-            );
-          })}
+    <footer className="mt-24">
+      <svg viewBox="0 0 1000 20" preserveAspectRatio="none" className="block h-5 w-full" aria-hidden="true">
+        <path d="M0 20V11C80 7 150 13 240 9S400 4 480 10 640 15 730 8 900 5 1000 10V20Z" fill="var(--color-land)" />
+        <path
+          d="M0 11C80 7 150 13 240 9S400 4 480 10 640 15 730 8 900 5 1000 10"
+          fill="none"
+          stroke="var(--color-ink)"
+          strokeWidth="1.5"
+          vectorEffect="non-scaling-stroke"
+        />
+      </svg>
+      <div className="bg-land pb-10 pt-8">
+        <div className="sheet grid gap-8 font-sans text-sm sm:grid-cols-3">
+          <div>
+            <p className="font-serif text-lg italic">{profile.name}</p>
+            <p className="text-land-ink">{profile.place}</p>
+          </div>
+          <ul className="space-y-1">
+            <li>
+              <a href={profile.github}>GitHub</a>
+            </li>
+            <li>
+              <a href={profile.linkedin}>LinkedIn</a>
+            </li>
+            <li>
+              <a href={profile.x}>X</a>
+            </li>
+            <li>
+              <a href={profile.cv}>CV (PDF)</a>
+            </li>
+          </ul>
+          <div className="space-y-1 text-land-ink">
+            <p>Edition of {edition}</p>
+            <p>
+              Inspired by <a href="https://seanhalpin.xyz/">Seán Halpin</a>
+            </p>
+          </div>
         </div>
-
-        {/* Divider */}
-        <div className="h-px bg-gradient-to-r from-transparent via-white/[0.1] to-transparent mb-6"></div>
-
-        {/* Copyright */}
-        <div className="text-center text-gray-400 text-sm">
-          <p>
-            &copy; {new Date().getFullYear()} Marcel's. Inspired by{" "}
-            <a
-              href="https://seanhalpin.xyz/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-yellowg/70 hover:text-yellowg transition-colors"
-            >
-              Seán Halpin
-            </a>
-          </p>
-        </div>
-      </motion.div>
+      </div>
     </footer>
   );
 }

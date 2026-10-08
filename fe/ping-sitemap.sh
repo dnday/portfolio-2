@@ -5,11 +5,11 @@ echo "🚀 Pinging search engines..."
 
 # Google
 echo "📍 Pinging Google..."
-curl -s "https://www.google.com/ping?sitemap=https://marcelinusdino.xyz/sitemap.xml" > /dev/null
+curl -s "https://www.google.com/ping?sitemap=https://marcelinusdino.vercel.app/sitemap.xml" > /dev/null
 
 # Bing
 echo "📍 Pinging Bing..."
-curl -s "https://www.bing.com/ping?sitemap=https://marcelinusdino.xyz/sitemap.xml" > /dev/null
+curl -s "https://www.bing.com/ping?sitemap=https://marcelinusdino.vercel.app/sitemap.xml" > /dev/null
 
 echo "✅ Search engines notified!"
-echo "🔗 Sitemap: https://marcelinusdino.xyz/sitemap.xml"
+echo "🔗 Sitemap: https://marcelinusdino.vercel.app/sitemap.xml"
