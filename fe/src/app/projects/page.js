@@ -14,9 +14,9 @@ function ExternalLink({ href, children }) {
   );
 }
 
-function ProjectText({ project, as: Tag = "div", heading: Heading = "h3" }) {
+function ProjectText({ project, as: Tag = "div", heading: Heading = "h3", className }) {
   return (
-    <Tag>
+    <Tag className={className}>
       <Heading className="font-serif text-[1.75rem] italic leading-tight">{project.title}</Heading>
       {project.award && <p className="mt-2 font-sans text-sm text-purple">{project.award}</p>}
       <p className="mt-3 max-w-[56ch]">{project.summary}</p>
@@ -45,7 +45,7 @@ export default function ProjectsPage() {
         {shown.map((project) => (
           <article
             key={project.title}
-            className="grid items-start gap-6 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-12"
+            className="reveal grid items-start gap-6 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-12"
           >
             <figure className="shot border border-ink p-2">
               <div className="overflow-hidden">
@@ -63,12 +63,12 @@ export default function ProjectsPage() {
         ))}
       </section>
       <section className="sheet mt-20 border-t border-ink pt-12" aria-labelledby="more">
-        <h2 id="more" className="font-serif text-3xl italic">
+        <h2 id="more" className="reveal font-serif text-3xl italic">
           More projects
         </h2>
         <ul className="mt-8 grid gap-x-14 gap-y-12 md:grid-cols-2">
           {rest.map((project) => (
-            <ProjectText key={project.title} project={project} as="li" />
+            <ProjectText key={project.title} project={project} as="li" className="reveal" />
           ))}
         </ul>
       </section>

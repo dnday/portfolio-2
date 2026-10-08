@@ -17,7 +17,7 @@ export default function Footer() {
         />
       </svg>
       <div className="bg-land pb-10 pt-8">
-        <div className="sheet grid gap-8 font-sans text-sm sm:grid-cols-3">
+        <div className="reveal sheet grid gap-8 font-sans text-sm sm:grid-cols-3">
           <div>
             <p className="font-serif text-lg italic">{profile.name}</p>
             <p className="text-land-ink">{profile.place}</p>

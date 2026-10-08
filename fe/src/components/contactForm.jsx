@@ -39,17 +39,17 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="grid max-w-xl gap-7">
-      {FIELDS.map(({ label, ...field }) => (
-        <label key={field.name} className="grid gap-1">
+      {FIELDS.map(({ label, ...field }, i) => (
+        <label key={field.name} className="rise grid gap-1" style={{ "--d": `${0.3 + i * 0.08}s` }}>
           <span className="font-sans text-sm">{label}</span>
           <input {...field} required className="field" />
         </label>
       ))}
-      <label className="grid gap-1">
+      <label className="rise grid gap-1" style={{ "--d": "0.54s" }}>
         <span className="font-sans text-sm">Message</span>
         <textarea name="message" required rows={6} className="field resize-y" />
       </label>
-      <div className="flex flex-wrap items-center gap-x-5 gap-y-3">
+      <div className="rise flex flex-wrap items-center gap-x-5 gap-y-3" style={{ "--d": "0.62s" }}>
         <button type="submit" disabled={sending} className="btn-primary">
           {sending ? "Sending…" : "Send message"}
         </button>

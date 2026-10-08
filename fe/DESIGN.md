@@ -187,7 +187,7 @@ Rectangles with square corners, like chart insets: 0 radius on panels, buttons, 
 
 ## Components
 
-- **Buttons.** Primary: black fill, white B612 text, 48px tall, square; hover turns Nautical Purple. Secondary: white with a 1px black border; hover fills with Sea. Labels say what happens ("See projects", "Send message"). No arrows appended.
+- **Buttons.** Primary: black fill, white B612 text, 48px tall, square; on hover Nautical Purple sweeps in from the left. Secondary: white with a 1px black border; on hover Sea sweeps in from the left. Labels say what happens ("See projects", "Send message"). No arrows appended.
 - **Chart illustration.** Land (Buff) top right with a 1.5px coastline; Shoal, Shallow and Sea bands parallel to the coast with 1px Contour Blue lines labelled 5, 10, 20, 30; about twenty italic soundings whose depth grows away from the coast; a Nautical Purple compass rose; a dashed pencil track with four circled fixes ending near the portrait.
 - **Project inset.** Screenshot in a framed inset (7 of 12 columns) beside the title (Newsreader italic), award in Nautical Purple B612, summary, "Built with ..." in pencil B612, and "Live site" / "Source code" links. Projects without screenshots are a two-column text list.
 - **Skills legend.** A table: group name in Newsreader italic on the left, items as a wrapped inline list on the right, 1px black row rules.
@@ -198,18 +198,21 @@ Rectangles with square corners, like chart insets: 0 radius on panels, buttons, 
 
 ## Do's and Don'ts
 
-**Motion (CSS only, all of it disabled under prefers-reduced-motion)**
+**Motion (all of it disabled under prefers-reduced-motion)**
 
-- Home load sequence: the course line is drawn along its length (stroke-dashoffset through a mask), each fix pops in when the line reaches it, two Nautical Purple sonar pings mark the current position and then stop, the compass rose swings in and settles, soundings fade in one by one.
-- Page changes use the View Transitions API: the old page fades up and out, the new one rises in; the header stays still.
-- About: the experience track draws itself while scrolling and each fix pops in as it enters the viewport (scroll-driven animation).
-- Hover: the logo's compass swings 90 degrees; project screenshots scale to 1.03 inside their frame.
+The owner wants the site to feel alive, so everything moves, but slowly and with one easing, cubic-bezier(0.16, 1, 0.3, 1).
+
+- Page load: headings are lettered in word by word (each word slides up from behind a clip), then the rest rises 24px and fades in, staggered; the contour divider under page titles is drawn left to right; the cartouche's outer rule settles onto the frame.
+- Home chart, when it scrolls into view: contours sketch in, soundings fade in one by one, the compass rose swings and settles on north, then a small purple boat sails the dashed course line as it is drawn, a fix pops in at each point, and two sonar pings mark the current position and stop.
+- Scroll: every section heading, row and project rises in as it enters the viewport (an IntersectionObserver adds a class; CSS does the motion), staggered when several arrive together. Wheel scrolling is smoothed with Lenis. On desktop a purple marker rides the left border scale with the scroll position. The About experience track draws itself while scrolling.
+- Hover: nav underlines draw in from the left; link underlines drop slightly; buttons fill from the left; list rows get a Sea band sweeping in behind them and shift 10px right; project screenshots zoom to 1.05, their frame turns purple and the scale bar stretches; experience fixes turn purple; the logo's compass swings 90 degrees.
+- Page changes use the View Transitions API: the old page fades up and out, the new one fades in while its own entrances play; the header stays still.
 
 **Do**
 
 - Take every decoration from a real chart symbol: contour, sounding, neatline, scale bar, compass rose, position fix, course line.
 - Keep Nautical Purple rare, at most about 5% of any screen.
-- Keep it light: inline SVG and CSS, two font families, WebP screenshots, no animation library.
+- Keep it light: inline SVG and CSS, two font families, WebP screenshots, no animation library (Lenis, about 4 KB, only smooths wheel scrolling).
 - Keep text contrast at 4.5:1 or better.
 
 **Don't**
@@ -219,4 +222,4 @@ Rectangles with square corners, like chart insets: 0 radius on panels, buttons, 
 - No centered hero with three feature cards, no bento grid, no icon-in-a-rounded-square tiles, no decorative 01/02/03 numbering, no fake window dots.
 - No cream with terracotta, no black with acid green, no all-caps or monospace label chrome, no meta strings joined with middle dots.
 - No emoji, no sparkles, no copy like "seamless", "elevate" or "cutting-edge", no arrows appended to buttons.
-- No fade-up on every section; motion only where a navigator's tools would move.
+- No bouncy or looping motion: entrances move 32px at most, finish within about 2 seconds, and nothing repeats for more than 5 seconds.

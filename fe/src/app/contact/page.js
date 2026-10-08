@@ -11,7 +11,7 @@ export default function ContactPage() {
       <PageHead title="Contact" intro="Send a message and I’ll reply by email." />
       <section className="sheet grid gap-14 lg:grid-cols-[minmax(0,1fr)_260px]">
         <ContactForm />
-        <ul className="space-y-3 self-start border-t border-ink pt-5 font-sans text-sm lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
+        <ul className="rise space-y-3 self-start border-t border-ink pt-5 font-sans text-sm lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0" style={{ "--d": "0.6s" }}>
           <li>
             <a href={profile.github}>GitHub</a>
           </li>

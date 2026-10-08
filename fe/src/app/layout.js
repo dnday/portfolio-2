@@ -2,6 +2,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { B612, Newsreader } from "next/font/google";
 import heroPic from "../assets/self2.jpg";
 import Footer from "../components/footer";
+import Motion from "../components/motion";
 import Nav from "../components/nav";
 import NowPlaying from "../components/nowPlaying";
 import { education, profile, SITE_URL } from "../content";
@@ -83,6 +84,7 @@ export default function RootLayout({ children }) {
         <main id="main">{children}</main>
         <Footer />
         <NowPlaying />
+        <Motion />
         <SpeedInsights />
       </body>
     </html>

@@ -23,9 +23,9 @@ export default function NavLinks() {
               <Link
                 href={href}
                 aria-current={active ? "page" : undefined}
-                className={`block py-3 underline-offset-8 ${active ? "text-purple underline decoration-2" : "no-underline hover:underline"}`}
+                className={`block py-3 no-underline ${active ? "text-purple" : ""}`}
               >
-                {label}
+                <span className="link-draw">{label}</span>
               </Link>
             </li>
           );

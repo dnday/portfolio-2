@@ -16,7 +16,7 @@ export default function SkillsPage() {
           <caption className="sr-only">Technical skills by group</caption>
           <tbody>
             {skills.map(({ group, items }) => (
-              <tr key={group} className="block border-t border-ink py-6 sm:table-row sm:py-0">
+              <tr key={group} className="reveal skill-row block border-t border-ink py-6 sm:table-row sm:py-0">
                 <th
                   scope="row"
                   className="block pb-2 text-left align-top font-serif text-2xl font-normal italic sm:table-cell sm:w-1/4 sm:py-6 sm:pr-8"
@@ -34,15 +34,15 @@ export default function SkillsPage() {
             ))}
           </tbody>
         </table>
-        <p className="border-t border-ink pt-6">Spoken: {spokenLanguages}</p>
+        <p className="reveal border-t border-ink pt-6">Spoken: {spokenLanguages}</p>
       </section>
       <section className="sheet mt-20" aria-labelledby="certificates">
-        <h2 id="certificates" className="font-serif text-3xl italic">
+        <h2 id="certificates" className="reveal font-serif text-3xl italic">
           Certificates
         </h2>
         <ul className="mt-6 space-y-3">
           {certificates.map((cert) => (
-            <li key={cert.title}>
+            <li key={cert.title} className="reveal">
               <a href={cert.url} target="_blank" rel="noopener noreferrer">
                 {cert.title}
                 <span className="sr-only"> (opens in a new tab)</span>
