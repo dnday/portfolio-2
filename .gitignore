@@ -14,7 +14,7 @@ build/
 .env
 .env.development.local
 .env.test.local
-be/src/env
+be/src/.env
 
 # Editor
 .vscode/*

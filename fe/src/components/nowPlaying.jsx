@@ -37,7 +37,7 @@ export default function NowPlaying() {
       href={`https://open.spotify.com/search/${encodeURIComponent(`${track.name} ${artist}`)}`}
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-6 right-12 z-30 hidden max-w-72 items-center gap-3 border border-ink bg-paper p-2 pr-4 no-underline hover:bg-sea md:flex"
+      className="fixed bottom-6 right-12 z-30 hidden max-w-72 items-center gap-3 border border-ink bg-paper p-2 pr-4 no-underline hover:bg-sea lg:flex"
     >
       {art && <img src={art} alt="" width="40" height="40" className="size-10 shrink-0" />}
       <span className="min-w-0 font-sans text-xs leading-snug">

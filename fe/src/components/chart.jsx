@@ -83,7 +83,7 @@ export function HeroChart({ children }) {
         </g>
         <path d={g.land} fill="var(--color-land)" />
         <path d={g.coast} fill="none" stroke="var(--color-ink)" strokeWidth="1.5" />
-        <g className="font-serif italic" fontSize="15" textAnchor="middle">
+        <g className="font-serif italic" fontSize="15" textAnchor="middle" fill="var(--color-ink)">
           {g.contours.map((c) => (
             <text
               key={c.label}

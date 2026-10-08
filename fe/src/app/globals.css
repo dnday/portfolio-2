@@ -33,6 +33,8 @@ body {
   font-size: 1.125rem;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  /* Things that slide in from the side start off screen; clip (not hidden) keeps sticky working */
+  overflow-x: clip;
 }
 
 /* -style only: the text-wrap shorthand would also reset wrapping and undo whitespace-nowrap */

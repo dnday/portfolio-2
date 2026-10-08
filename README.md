@@ -1,12 +1,35 @@
-# React + Vite
+# marcelinusdino.vercel.app
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Portfolio of Marcelinus Dinoglide Yoga Prakoso, styled as a nautical chart ("Working Chart", see `fe/DESIGN.md`).
 
-Currently, two official plugins are available:
+- `fe/`: Next.js 16 (App Router) built as a static export to `fe/out`. Motion and Lenis for animation, Tailwind CSS v4.
+- `api/contact/`: Go serverless function on Vercel behind the contact form (`POST /api/contact`).
+- `be/`: the older standalone Go server, kept for reference; not deployed.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Develop
 
-## Expanding the ESLint configuration
+```bash
+cd fe
+npm install
+npm run dev      # http://localhost:3000
+npm run build    # static site in fe/out
+npm run lint
+```
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+The contact form posts to `/api`, so locally it only works under `vercel dev` (run from the repo root), or with `NEXT_PUBLIC_API_URL` pointing at a running API.
+
+## Environment variables (Vercel)
+
+| Name | Used by | Notes |
+| --- | --- | --- |
+| `NEXT_PUBLIC_LASTFM_API_KEY`, `NEXT_PUBLIC_LASTFM_USERNAME` | Now playing widget | Public by design; never put a secret in a `NEXT_PUBLIC_` variable |
+| `RESEND_API_KEY`, `CONTACT_TO_EMAIL` | Contact form | Emails each message to you through [Resend](https://resend.com) |
+| `CONTACT_FROM_EMAIL` | Contact form | Optional sender on your own verified domain; defaults to `onboarding@resend.dev`, which only delivers to your Resend account's address |
+| `MONGODB_URI`, `MONGODB_DB_NAME`, `MONGODB_COLLECTION` | Contact form | Optional: also save messages to MongoDB |
+| `GITHUB_TOKEN` | Projects page Logbook | Optional: raises the GitHub API rate limit at build time |
+
+The contact form needs at least one delivery method (Resend or MongoDB). A message succeeds if any configured method works.
+
+## Deploy
+
+Vercel builds from the repo root using `vercel.json` (`cd fe && npm install && npm run build`, output `fe/out`). Pushing to `main` deploys production; other branches get preview deployments.
