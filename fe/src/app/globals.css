@@ -310,7 +310,7 @@ button {
   transform-origin: right;
 }
 
-a:hover > .link-draw::after,
+:is(a, button):hover > .link-draw::after,
 [aria-current="page"] > .link-draw::after {
   transform: scaleX(1);
   transform-origin: left;
@@ -1038,5 +1038,50 @@ html[data-theme="dark"] .stack-chip[data-dim] {
 
   .logbook-bar {
     animation: bar-fill 1s var(--ease-glide) backwards;
+  }
+}
+
+/* Footer (components/footer.jsx) */
+.social-link svg,
+.social-mono {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  fill: currentColor;
+  transition: color 0.3s ease;
+}
+
+.social-mono {
+  display: grid;
+  place-items: center;
+  border: 1.5px solid currentColor;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.social-link:hover :is(svg, .social-mono) {
+  color: var(--brand);
+}
+
+html[data-theme="dark"] .social-link:hover :is(svg, .social-mono) {
+  color: var(--color-ink);
+}
+
+.back-to-top {
+  cursor: pointer;
+}
+
+.back-to-top:hover {
+  color: var(--color-purple);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .back-to-top-rose {
+    transition: transform 0.9s var(--ease-spring);
+  }
+
+  .back-to-top:hover .back-to-top-rose {
+    transform: rotate(-180deg);
   }
 }

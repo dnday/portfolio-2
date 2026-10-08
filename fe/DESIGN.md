@@ -195,7 +195,7 @@ Rectangles with square corners, like chart insets: 0 radius on panels, buttons, 
 - **Experience track.** A vertical dashed pencil line with a 23px position-fix circle at each role: dates in B612, role in Newsreader italic, organization, then bullet points.
 - **Contact form.** Labels in B612 above inputs that only have a 1px black bottom border, 18px text, a 2px Nautical Purple focus ring, and a polite live status line next to the button.
 - **Now playing.** A small fixed panel bottom right on desktop: 40px album art, "Listening now" or "Last played" in pencil, track and artist, linking to a Spotify search.
-- **Footer.** A Buff land strip under a wavy coastline: name, place, links (GitHub, LinkedIn, X, CV) and "Edition of <month year>".
+- **Footer.** A Buff land strip under a wavy coastline: a large italic call to action ("Got something to build?") with a magnetic Get in touch button; the oversized name drifting sideways; four columns with italic headings (Position with live Yogyakarta time, Pages, Elsewhere with one-color logos that take their brand color on hover, Chart notes with the edition and a Back to top button whose compass turns); a graduated scale bar with the copyright and coordinates.
 
 ## Do's and Don'ts
 
