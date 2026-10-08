@@ -25,7 +25,11 @@ export default function NavLinks() {
                 aria-current={active ? "page" : undefined}
                 className={`block py-3 no-underline ${active ? "text-purple" : ""}`}
               >
-                <span className="link-draw">{label}</span>
+                <span className="link-draw">
+                  <span className="roll">
+                    <span data-text={label}>{label}</span>
+                  </span>
+                </span>
               </Link>
             </li>
           );

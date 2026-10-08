@@ -685,3 +685,90 @@ a:hover > .link-draw::after,
     animation-delay: 0s !important;
   }
 }
+
+/* Rolling labels (nav, buttons): on hover the text slides up and a copy rolls in from below */
+.roll {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+}
+
+.roll > span {
+  position: relative;
+  display: inline-block;
+}
+
+.roll > span::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 100%;
+}
+
+@media (prefers-reduced-motion: no-preference) and (hover: hover) {
+  .roll > span {
+    transition: transform 0.55s var(--ease-glide);
+  }
+
+  a:hover .roll > span {
+    transform: translateY(-100%);
+  }
+}
+
+/* Intro overlay (app/layout.js): first visit per session, lifts away after about 2 seconds */
+.intro {
+  display: none;
+}
+
+.intro-show .intro {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 14px;
+  background: var(--color-paper);
+  animation: intro-out 1s var(--ease-glide) 1.6s forwards;
+}
+
+.intro-rose {
+  width: 96px;
+  height: 96px;
+  color: var(--color-purple);
+  animation: rose-swing 1.6s ease-in-out both;
+}
+
+.intro-name {
+  font-size: clamp(3.5rem, 10vw, 7rem);
+  line-height: 1;
+  animation: rise 1s var(--ease-glide) 0.15s backwards;
+}
+
+.intro-coords {
+  animation: rise 1s var(--ease-glide) 0.3s backwards;
+}
+
+.intro-bar {
+  width: 200px;
+  transform-origin: left;
+  animation: bar-fill 1.3s var(--ease-glide) 0.2s backwards;
+}
+
+/* Hold the page's own entrances while the intro is up */
+html[data-intro] :is(header, main, footer) * {
+  animation-play-state: paused !important;
+}
+
+@keyframes intro-out {
+  to {
+    transform: translateY(-100%);
+    visibility: hidden;
+  }
+}
+
+@keyframes bar-fill {
+  from {
+    transform: scaleX(0);
+  }
+}

@@ -1,6 +1,7 @@
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { B612, Newsreader } from "next/font/google";
 import heroPic from "../assets/self2.jpg";
+import { CompassRose } from "../components/chart";
 import Footer from "../components/footer";
 import { Cursor, MotionProvider, ScrollProgress } from "../components/fx";
 import Motion from "../components/motion";
@@ -73,10 +74,23 @@ const jsonLd = {
   ],
 };
 
+// First visit in a session: show the intro overlay and hold the page's entrance animations
+// until it lifts (.intro and html[data-intro] in globals.css). Runs before first paint.
+const INTRO = `try{var h=document.documentElement;if(!sessionStorage.getItem("intro")&&matchMedia("(prefers-reduced-motion: no-preference)").matches){sessionStorage.setItem("intro","1");h.dataset.intro="";h.classList.add("intro-show");setTimeout(function(){delete h.dataset.intro},1700);setTimeout(function(){h.classList.remove("intro-show")},2700)}}catch(e){}`;
+
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${newsreader.variable} ${b612.variable}`}>
+    <html lang="en" className={`${newsreader.variable} ${b612.variable}`} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: INTRO }} />
+      </head>
       <body>
+        <div className="intro" aria-hidden="true">
+          <CompassRose className="intro-rose" />
+          <p className="intro-name font-serif italic">Marcel</p>
+          <p className="intro-coords font-sans text-sm text-pencil">{profile.coords}</p>
+          <span className="intro-bar scale-bar" />
+        </div>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
         <a href="#main" className="skip-link">
           Skip to content
