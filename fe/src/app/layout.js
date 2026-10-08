@@ -74,9 +74,9 @@ const jsonLd = {
   ],
 };
 
-// First visit in a session: show the intro overlay and hold the page's entrance animations
+// Sets the saved (or system) theme, and on the first visit in a session shows the intro overlay and hold the page's entrance animations
 // until it lifts (.intro and html[data-intro] in globals.css). Runs before first paint.
-const INTRO = `try{var h=document.documentElement;if(!sessionStorage.getItem("intro")&&matchMedia("(prefers-reduced-motion: no-preference)").matches){sessionStorage.setItem("intro","1");h.dataset.intro="";h.classList.add("intro-show");setTimeout(function(){delete h.dataset.intro},1700);setTimeout(function(){h.classList.remove("intro-show")},2700)}}catch(e){}`;
+const INTRO = `try{var h=document.documentElement;h.dataset.theme=localStorage.getItem("theme")||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");if(!sessionStorage.getItem("intro")&&matchMedia("(prefers-reduced-motion: no-preference)").matches){sessionStorage.setItem("intro","1");h.dataset.intro="";h.classList.add("intro-show");setTimeout(function(){delete h.dataset.intro},1700);setTimeout(function(){h.classList.remove("intro-show")},2700)}}catch(e){}`;
 
 export default function RootLayout({ children }) {
   return (

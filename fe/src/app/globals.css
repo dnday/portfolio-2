@@ -772,3 +772,29 @@ html[data-intro] :is(header, main, footer) * {
     transform: scaleX(0);
   }
 }
+
+/* Night chart: the same symbols on a dark sea, switched by the anchor (components/themeAnchor.jsx) */
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --color-ink: #e9e4d6;
+  --color-paper: #0c1724;
+  --color-sea: #10263a;
+  --color-shallow: #15334d;
+  --color-shoal: #1c4565;
+  --color-contour: #5bb3dd;
+  --color-land: #2b2518;
+  --color-land-ink: #d4b47a;
+  --color-purple: #d68ccb;
+  --color-pencil: #9ba6b0;
+}
+
+/* Theme switch: the new chart spreads out in a circle from the anchor; the header goes with it */
+html[data-theme-switch]::view-transition-old(root),
+html[data-theme-switch]::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+html[data-theme-switch] header {
+  view-transition-name: none !important;
+}

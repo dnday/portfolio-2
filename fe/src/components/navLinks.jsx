@@ -14,7 +14,7 @@ export default function NavLinks() {
   const pathname = usePathname();
 
   return (
-    <nav aria-label="Main">
+    <nav aria-label="Main" className="order-3 w-full sm:order-2 sm:ml-auto sm:w-auto">
       <ul className="flex gap-5 font-sans text-sm sm:gap-7 sm:text-[0.9375rem]">
         {LINKS.map(([href, label]) => {
           const active = pathname === href;

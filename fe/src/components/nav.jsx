@@ -2,6 +2,7 @@ import Link from "next/link";
 import { CompassRose } from "./chart";
 import { ScrollSpin } from "./fx";
 import NavLinks from "./navLinks";
+import ThemeAnchor from "./themeAnchor";
 
 export default function Nav() {
   return (
@@ -16,6 +17,7 @@ export default function Nav() {
         <span className="font-serif text-2xl italic">Marcel</span>
       </Link>
       <NavLinks />
+      <ThemeAnchor />
     </header>
   );
 }
