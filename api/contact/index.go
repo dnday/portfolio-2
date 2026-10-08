@@ -5,6 +5,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"io"
 	"log"
 	"net/http"
 	"net/mail"
@@ -165,7 +166,10 @@ func sendEmail(ctx context.Context, key string, req ContactRequest) error {
 	}
 	defer res.Body.Close()
 	if res.StatusCode >= 300 {
-		return fmt.Errorf("resend answered %s", res.Status)
+		// Resend explains the refusal in the body (wrong recipient, unverified domain, bad key).
+		// It only goes to the server log, never to the visitor.
+		detail, _ := io.ReadAll(io.LimitReader(res.Body, 500))
+		return fmt.Errorf("resend answered %s: %s", res.Status, bytes.TrimSpace(detail))
 	}
 	return nil
 }
