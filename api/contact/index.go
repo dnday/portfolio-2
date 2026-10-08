@@ -134,6 +134,11 @@ func sendEmail(ctx context.Context, key string, req ContactRequest) error {
 		return fmt.Errorf("CONTACT_TO_EMAIL is not set")
 	}
 	from := os.Getenv("CONTACT_FROM_EMAIL")
+	if isFreeMail(from) {
+		// Resend can only send from a domain you have verified, never from gmail.com and the like.
+		log.Printf("contact: ignoring CONTACT_FROM_EMAIL %q, a free mail address can't be a Resend sender", from)
+		from = ""
+	}
 	if from == "" {
 		// Resend's shared sender; it can only deliver to the address on your Resend account.
 		from = "Portfolio <onboarding@resend.dev>"
@@ -200,4 +205,20 @@ func writeOK(w http.ResponseWriter) {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
 	json.NewEncoder(w).Encode(map[string]string{"message": "Contact form submitted successfully"})
+}
+
+// isFreeMail reports whether an address (optionally "Name <addr>") is on a public mail domain.
+func isFreeMail(addr string) bool {
+	if parsed, err := mail.ParseAddress(addr); err == nil {
+		addr = parsed.Address
+	}
+	at := strings.LastIndex(addr, "@")
+	if at < 0 {
+		return false
+	}
+	switch strings.ToLower(addr[at+1:]) {
+	case "gmail.com", "googlemail.com", "yahoo.com", "yahoo.co.id", "outlook.com", "hotmail.com", "live.com", "icloud.com", "proton.me", "protonmail.com":
+		return true
+	}
+	return false
 }
