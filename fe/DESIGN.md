@@ -206,13 +206,15 @@ The owner wants the site to feel alive, so everything moves, but slowly and with
 - Home chart, when it scrolls into view: contours sketch in, soundings fade in one by one, the compass rose swings and settles on north, then a small purple boat sails the dashed course line as it is drawn, a fix pops in at each point, and two sonar pings mark the current position and stop.
 - Scroll: every section heading, row and project rises in as it enters the viewport (an IntersectionObserver adds a class; CSS does the motion), staggered when several arrive together. Wheel scrolling is smoothed with Lenis. On desktop a purple marker rides the left border scale with the scroll position. The About experience track draws itself while scrolling.
 - Hover: nav underlines draw in from the left; link underlines drop slightly; buttons fill from the left; list rows get a Sea band sweeping in behind them and shift 10px right; project screenshots zoom to 1.05, their frame turns purple and the scale bar stretches; experience fixes turn purple; the logo's compass swings 90 degrees.
+- Parallax and depth (Motion): the hero text, chart and portrait drift against the mouse at different depths and the chart tilts slightly; the chart lags the scroll; both compass roses turn as you scroll; project screenshots slide in from alternating sides, tilt toward the pointer and pan inside their frames; the footer's oversized name slides sideways; a purple progress line runs along the top; a purple ring follows the mouse and grows over links; buttons are magnetic.
+- Scrollbar: purple thumb on a paper track ruled off with a black line, never the browser default.
 - Page changes use the View Transitions API: the old page fades up and out, the new one fades in while its own entrances play; the header stays still.
 
 **Do**
 
 - Take every decoration from a real chart symbol: contour, sounding, neatline, scale bar, compass rose, position fix, course line.
 - Keep Nautical Purple rare, at most about 5% of any screen.
-- Keep it light: inline SVG and CSS, two font families, WebP screenshots, no animation library (Lenis, about 4 KB, only smooths wheel scrolling).
+- Keep it light: inline SVG and CSS, two font families, WebP screenshots. Motion (Framer Motion) drives parallax, tilt, magnetic buttons, the cursor ring and scroll-linked pieces; Lenis smooths wheel scrolling.
 - Keep text contrast at 4.5:1 or better.
 
 **Don't**

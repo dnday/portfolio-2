@@ -73,6 +73,38 @@ button {
   background: var(--color-shallow);
 }
 
+/* Scrollbar: a purple thumb on a paper track ruled off with a black line, like the border scale.
+   Chrome, Edge and Safari use the ::-webkit-scrollbar parts; Firefox gets the two colors. */
+::-webkit-scrollbar {
+  width: 14px;
+  height: 14px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-paper);
+  border-left: 1px solid var(--color-ink);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-purple);
+  border: 3px solid var(--color-paper);
+  border-left-width: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-ink);
+}
+
+::-webkit-scrollbar-corner {
+  background: var(--color-paper);
+}
+
+@supports not selector(::-webkit-scrollbar) {
+  html {
+    scrollbar-color: var(--color-purple) var(--color-paper);
+  }
+}
+
 .sheet {
   width: 100%;
   max-width: 1120px;
@@ -231,6 +263,25 @@ button {
   background: radial-gradient(var(--color-pencil) 0 2.5px, var(--color-paper) 3px);
 }
 
+/* Mouse cursor ring (Cursor in components/fx.jsx); hidden on touch screens */
+.cursor-ring {
+  position: fixed;
+  left: -16px;
+  top: -16px;
+  z-index: 60;
+  width: 32px;
+  height: 32px;
+  border: 1.5px solid var(--color-purple);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+@media (hover: none) {
+  .cursor-ring {
+    display: none;
+  }
+}
+
 /* Headings set word by word (Words in components/chart.jsx): each word slides up from behind its own
    clip. The negative insets keep italic overhangs and descenders inside the clip. */
 .word {
@@ -373,20 +424,6 @@ a:hover > .link-draw::after,
     animation: settle 1.4s var(--ease-glide) 0.5s backwards;
   }
 
-  .track-item .fix {
-    animation: pop-in 0.6s var(--ease-spring) 0.3s backwards;
-  }
-
-  /* About: the experience track is plotted as you scroll (where supported) */
-  @supports (animation-timeline: view()) {
-    .track-line {
-      transform-origin: top;
-      animation: grow-down linear both;
-      animation-timeline: view();
-      animation-range: entry 0% cover 60%;
-    }
-  }
-
   /* Hover */
   a {
     transition: color 0.2s ease, text-underline-offset 0.4s var(--ease-glide);
@@ -495,7 +532,7 @@ a:hover > .link-draw::after,
 
   .reveal:not(.in) {
     opacity: 0;
-    transform: translateY(32px);
+    transform: translateY(56px);
   }
 
   /* Animations inside a block start when it comes into view */
@@ -596,12 +633,6 @@ a:hover > .link-draw::after,
 @keyframes fade-in {
   from {
     opacity: 0;
-  }
-}
-
-@keyframes grow-down {
-  from {
-    transform: scaleY(0);
   }
 }
 

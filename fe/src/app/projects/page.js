@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { PageHead } from "../../components/chart";
 import { projects } from "../../content";
+import { Parallax, Reveal, Tilt } from "../../components/fx";
 import PageTransition from "../../components/pageTransition";
 
 export const metadata = { title: "Projects", alternates: { canonical: "/projects" } };
@@ -14,9 +15,9 @@ function ExternalLink({ href, children }) {
   );
 }
 
-function ProjectText({ project, as: Tag = "div", heading: Heading = "h3", className }) {
+function ProjectText({ project, heading: Heading = "h3" }) {
   return (
-    <Tag className={className}>
+    <div>
       <Heading className="font-serif text-[1.75rem] italic leading-tight">{project.title}</Heading>
       {project.award && <p className="mt-2 font-sans text-sm text-purple">{project.award}</p>}
       <p className="mt-3 max-w-[56ch]">{project.summary}</p>
@@ -27,7 +28,7 @@ function ProjectText({ project, as: Tag = "div", heading: Heading = "h3", classN
           {project.repo && <ExternalLink href={project.repo}>Source code</ExternalLink>}
         </p>
       )}
-    </Tag>
+    </div>
   );
 }
 
@@ -42,33 +43,47 @@ export default function ProjectsPage() {
         intro="Things I’ve built for competitions, classes and research teams. Where there’s a live site or public code, it’s linked."
       />
       <section className="sheet grid gap-16" aria-label="Projects with screenshots">
-        {shown.map((project) => (
-          <article
-            key={project.title}
-            className="reveal grid items-start gap-6 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-12"
-          >
-            <figure className="shot border border-ink p-2">
-              <div className="overflow-hidden">
-                <Image
-                  src={project.shot}
-                  alt={`Screenshot of ${project.title}`}
-                  sizes="(min-width: 1024px) 600px, 100vw"
-                  className="block h-auto w-full"
-                />
-              </div>
-              <div className="scale-bar mt-2 w-1/3" />
-            </figure>
-            <ProjectText project={project} heading="h2" />
-          </article>
-        ))}
+        {shown.map((project, i) => {
+          // Alternate sides, and slide each half in from its own side.
+          const flip = i % 2 === 1;
+          return (
+            <article
+              key={project.title}
+              className={`grid items-center gap-6 lg:gap-12 ${flip ? "lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]" : "lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)]"}`}
+            >
+              <Reveal from={flip ? "right" : "left"} className={flip ? "lg:order-2" : undefined}>
+                <Tilt>
+                  <figure className="shot border border-ink bg-paper p-2">
+                    <div className="overflow-hidden">
+                      <Parallax range={24}>
+                        <Image
+                          src={project.shot}
+                          alt={`Screenshot of ${project.title}`}
+                          sizes="(min-width: 1024px) 600px, 100vw"
+                          className="block h-auto w-full scale-120"
+                        />
+                      </Parallax>
+                    </div>
+                    <div className="scale-bar mt-2 w-1/3" />
+                  </figure>
+                </Tilt>
+              </Reveal>
+              <Reveal from={flip ? "left" : "right"} delay={0.15}>
+                <ProjectText project={project} heading="h2" />
+              </Reveal>
+            </article>
+          );
+        })}
       </section>
       <section className="sheet mt-20 border-t border-ink pt-12" aria-labelledby="more">
-        <h2 id="more" className="reveal font-serif text-3xl italic">
+        <Reveal as="h2" from="left" id="more" className="font-serif text-4xl italic">
           More projects
-        </h2>
+        </Reveal>
         <ul className="mt-8 grid gap-x-14 gap-y-12 md:grid-cols-2">
-          {rest.map((project) => (
-            <ProjectText key={project.title} project={project} as="li" className="reveal" />
+          {rest.map((project, i) => (
+            <Reveal as="li" key={project.title} delay={(i % 2) * 0.12}>
+              <ProjectText project={project} />
+            </Reveal>
           ))}
         </ul>
       </section>

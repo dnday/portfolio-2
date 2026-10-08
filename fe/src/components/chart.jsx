@@ -1,5 +1,6 @@
 import { Fragment } from "react";
 import { geometry as g } from "./chartGeometry";
+import { ScrollSpin } from "./fx";
 
 // Halo behind each contour label matches the water band it sits in.
 const LABEL_HALO = {
@@ -104,9 +105,11 @@ export function HeroChart({ children }) {
           ))}
         </g>
         <g transform="translate(104 404)" className="text-purple">
-          <g className="rose-swing">
-            <RoseMarks />
-          </g>
+          <ScrollSpin turn={0.25}>
+            <g className="rose-swing">
+              <RoseMarks />
+            </g>
+          </ScrollSpin>
         </g>
       </svg>
       <svg

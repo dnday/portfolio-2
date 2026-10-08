@@ -2,6 +2,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { B612, Newsreader } from "next/font/google";
 import heroPic from "../assets/self2.jpg";
 import Footer from "../components/footer";
+import { Cursor, MotionProvider, ScrollProgress } from "../components/fx";
 import Motion from "../components/motion";
 import Nav from "../components/nav";
 import NowPlaying from "../components/nowPlaying";
@@ -80,9 +81,13 @@ export default function RootLayout({ children }) {
         <a href="#main" className="skip-link">
           Skip to content
         </a>
-        <Nav />
-        <main id="main">{children}</main>
-        <Footer />
+        <MotionProvider>
+          <ScrollProgress />
+          <Nav />
+          <main id="main">{children}</main>
+          <Footer />
+          <Cursor />
+        </MotionProvider>
         <NowPlaying />
         <Motion />
         <SpeedInsights />

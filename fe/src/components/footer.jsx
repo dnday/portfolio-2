@@ -1,4 +1,5 @@
 import { profile } from "../content";
+import { DriftText } from "./fx";
 
 // Rendered at build time, so this is the date the site was last published.
 const edition = new Intl.DateTimeFormat("en", { month: "long", year: "numeric" }).format(new Date());
@@ -16,7 +17,10 @@ export default function Footer() {
           vectorEffect="non-scaling-stroke"
         />
       </svg>
-      <div className="bg-land pb-10 pt-8">
+      <div className="bg-land pb-10 pt-4">
+        <DriftText className="mb-8 whitespace-nowrap font-serif text-[15vw] italic leading-[1.05] text-land-ink/25">
+          Marcelinus Dinoglide
+        </DriftText>
         <div className="reveal sheet grid gap-8 font-sans text-sm sm:grid-cols-3">
           <div>
             <p className="font-serif text-lg italic">{profile.name}</p>

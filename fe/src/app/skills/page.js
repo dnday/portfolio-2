@@ -1,5 +1,6 @@
 import { PageHead } from "../../components/chart";
 import { certificates, skills, spokenLanguages } from "../../content";
+import { Reveal, StaggerList } from "../../components/fx";
 import PageTransition from "../../components/pageTransition";
 
 export const metadata = { title: "Skills", alternates: { canonical: "/skills" } };
@@ -24,11 +25,7 @@ export default function SkillsPage() {
                   {group}
                 </th>
                 <td className="block align-top sm:table-cell sm:py-6">
-                  <ul className="flex flex-wrap gap-x-6 gap-y-1">
-                    {items.map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
+                  <StaggerList items={items} className="flex flex-wrap gap-x-6 gap-y-1" />
                 </td>
               </tr>
             ))}
@@ -37,9 +34,9 @@ export default function SkillsPage() {
         <p className="reveal border-t border-ink pt-6">Spoken: {spokenLanguages}</p>
       </section>
       <section className="sheet mt-20" aria-labelledby="certificates">
-        <h2 id="certificates" className="reveal font-serif text-3xl italic">
+        <Reveal as="h2" from="left" id="certificates" className="font-serif text-4xl italic">
           Certificates
-        </h2>
+        </Reveal>
         <ul className="mt-6 space-y-3">
           {certificates.map((cert) => (
             <li key={cert.title} className="reveal">

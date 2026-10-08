@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import heroPic from "../assets/self2.jpg";
 import { HeroChart, Words } from "../components/chart";
+import { Depth, Drift, Magnetic, Reveal } from "../components/fx";
 import { awards, experience, profile } from "../content";
 import PageTransition from "../components/pageTransition";
 
@@ -11,7 +12,7 @@ export default function HomePage() {
   return (
     <PageTransition>
       <section className="sheet grid items-start gap-12 pb-16 pt-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,500px)] lg:pt-14">
-        <div>
+        <Depth x={-18} y={-12}>
           <div className="cartouche frame-in max-w-xl">
             <h1 className="font-serif text-[clamp(2.75rem,6.5vw,4.75rem)] italic leading-[0.95] tracking-tight">
               <Words text={profile.name} delay={0.1} />
@@ -29,50 +30,60 @@ export default function HomePage() {
             {profile.intro}
           </p>
           <div className="rise mt-8 flex flex-wrap gap-3" style={{ "--d": "0.75s" }}>
-            <Link href="/projects" className="btn-primary">
-              See projects
-            </Link>
-            <Link href="/contact" className="btn-secondary">
-              Get in touch
-            </Link>
+            <Magnetic>
+              <Link href="/projects" className="btn-primary">
+                See projects
+              </Link>
+            </Magnetic>
+            <Magnetic>
+              <Link href="/contact" className="btn-secondary">
+                Get in touch
+              </Link>
+            </Magnetic>
           </div>
-        </div>
+        </Depth>
 
-        <HeroChart>
-          <figure className="inset-settle absolute right-[5%] top-[4%] w-[33%] border border-ink bg-paper p-1.5">
-            <Image
-              src={heroPic}
-              alt="Portrait of Marcel"
-              preload
-              sizes="(min-width: 1024px) 170px, 33vw"
-              className="block h-auto w-full"
-            />
-            <div className="scale-bar mt-1.5" />
-          </figure>
-        </HeroChart>
+        <Drift speed={0.12} className="max-lg:transform-none!">
+          <Depth x={22} y={16} tilt={5}>
+            <HeroChart>
+              <Depth x={50} y={36} className="absolute right-[5%] top-[4%] w-[33%]">
+                <figure className="inset-settle border border-ink bg-paper p-1.5">
+                  <Image
+                    src={heroPic}
+                    alt="Portrait of Marcel"
+                    preload
+                    sizes="(min-width: 1024px) 170px, 33vw"
+                    className="block h-auto w-full"
+                  />
+                  <div className="scale-bar mt-1.5" />
+                </figure>
+              </Depth>
+            </HeroChart>
+          </Depth>
+        </Drift>
       </section>
 
       <section className="sheet border-t border-ink py-14" aria-labelledby="now">
-        <h2 id="now" className="reveal font-serif text-3xl italic">
+        <Reveal as="h2" from="left" id="now" className="font-serif text-4xl italic">
           Current position
-        </h2>
+        </Reveal>
         <ul className="mt-8 grid gap-10 md:grid-cols-2">
-          {current.map((job) => (
-            <li key={job.org} className="reveal">
+          {current.map((job, i) => (
+            <Reveal as="li" key={job.org} from={i % 2 ? "right" : "left"} delay={0.1}>
               <p className="font-sans text-sm text-pencil">Since {job.period.split(" – ")[0]}</p>
               <h3 className="mt-1 text-xl font-semibold">
                 {job.role}, {job.org}
               </h3>
               <p className="mt-2 max-w-[56ch]">{job.summary}</p>
-            </li>
+            </Reveal>
           ))}
         </ul>
       </section>
 
       <section className="sheet border-t border-ink py-14" aria-labelledby="results">
-        <h2 id="results" className="reveal font-serif text-3xl italic">
+        <Reveal as="h2" from="left" id="results" className="font-serif text-4xl italic">
           Recent results
-        </h2>
+        </Reveal>
         <ul className="mt-8">
           {awards.slice(0, 4).map((award) => (
             <li key={award.title} className="reveal row grid gap-1 border-t border-ink/20 py-4 sm:grid-cols-2 sm:gap-8">

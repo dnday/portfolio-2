@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { CompassRose } from "./chart";
+import { ScrollSpin } from "./fx";
 import NavLinks from "./navLinks";
 
 export default function Nav() {
@@ -9,7 +10,9 @@ export default function Nav() {
       style={{ viewTransitionName: "site-header" }}
     >
       <Link href="/" className="flex items-center gap-3 py-2 no-underline">
-        <CompassRose className="logo-rose size-8 text-purple" />
+        <ScrollSpin as="span" turn={0.4} className="inline-flex">
+          <CompassRose className="logo-rose size-8 text-purple" />
+        </ScrollSpin>
         <span className="font-serif text-2xl italic">Marcel</span>
       </Link>
       <NavLinks />
