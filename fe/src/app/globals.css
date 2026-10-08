@@ -35,15 +35,16 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* -style only: the text-wrap shorthand would also reset wrapping and undo whitespace-nowrap */
 h1,
 h2,
 h3 {
-  text-wrap: balance;
+  text-wrap-style: balance;
 }
 
 p,
 li {
-  text-wrap: pretty;
+  text-wrap-style: pretty;
 }
 
 a {
@@ -982,5 +983,77 @@ html[data-theme="dark"] .skill-tile[data-dim] {
 
   .skill-tile:hover :is(svg, .skill-mono) {
     transform: scale(1.2) rotate(-8deg);
+  }
+}
+
+/* Project stack chips and cards (app/projects/page.js) */
+.stack-chip {
+  --brand-on: var(--brand);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid color-mix(in oklab, var(--color-ink) 20%, transparent);
+  padding: 3px 9px;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+}
+
+html[data-theme="dark"] .stack-chip[data-dim] {
+  --brand-on: var(--color-ink);
+}
+
+.stack-chip svg {
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
+  transition: color 0.3s ease;
+}
+
+:is(article, .project-card):hover .stack-chip svg {
+  color: var(--brand-on);
+}
+
+.project-card {
+  height: 100%;
+  border: 1px solid color-mix(in oklab, var(--color-ink) 20%, transparent);
+  padding: 24px;
+  background: var(--color-paper);
+}
+
+.project-card:hover {
+  border-color: var(--color-purple);
+}
+
+.project-card:hover h3 {
+  color: var(--color-purple);
+}
+
+/* Logbook language bar: each language's share, filled in from the left when it scrolls into view */
+.logbook-bar {
+  height: 100%;
+  transform-origin: left;
+}
+
+.logbook-bar + .logbook-bar {
+  border-left: 1px solid var(--color-paper);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .project-card {
+    transition:
+      transform 0.5s var(--ease-spring),
+      border-color 0.3s ease;
+  }
+
+  .project-card h3 {
+    transition: color 0.3s ease;
+  }
+
+  .project-card:hover {
+    transform: translateY(-6px);
+  }
+
+  .logbook-bar {
+    animation: bar-fill 1s var(--ease-glide) backwards;
   }
 }

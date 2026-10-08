@@ -1,5 +1,6 @@
 // Site content. Facts follow the CV in D:\College\DataDiri (Oct 2026), worded for the web rather than copied.
 // GPA and phone number are deliberately left out.
+import evShot from "./assets/Project-ev.webp";
 import aiSumShot from "./assets/Project4.webp";
 import pionirShot from "./assets/Project3.webp";
 import recruitShot from "./assets/Project6.webp";
@@ -111,6 +112,13 @@ export const projects = [
     stack: ["SegFormer", "FAISS", "Gemini"],
   },
   {
+    title: "KosCheck",
+    summary:
+      "Flags scam boarding-house listings. It checks the price against the area, the photos and the chat with the owner at the same time, then gives a risk score from 0 to 100.",
+    stack: ["FastAPI", "Gemini", "Firebase", "Nginx"],
+    repo: "https://github.com/dnday/hackathon",
+  },
+  {
     title: "Instride",
     summary: "A mood tracker for students that their counselors can follow, with privacy built into the database.",
     stack: ["Next.js", "Supabase"],
@@ -123,6 +131,7 @@ export const projects = [
     stack: ["Next.js", "p5.js", "SimPy"],
     live: "https://modsim-finalproject.vercel.app",
     repo: "https://github.com/dnday/modsim-finalproject",
+    shot: evShot,
   },
   {
     title: "Smart Harvest Window Optimizer",
