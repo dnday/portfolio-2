@@ -40,12 +40,7 @@ export default function Footer() {
               <a href={profile.cv}>CV (PDF)</a>
             </li>
           </ul>
-          <div className="space-y-1 text-land-ink">
-            <p>Edition of {edition}</p>
-            <p>
-              Inspired by <a href="https://seanhalpin.xyz/">Seán Halpin</a>
-            </p>
-          </div>
+          <p className="text-land-ink">Edition of {edition}</p>
         </div>
       </div>
     </footer>
