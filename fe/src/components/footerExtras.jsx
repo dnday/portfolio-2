@@ -1,31 +1,5 @@
 "use client";
 
-import { useSyncExternalStore } from "react";
-
-const clock = new Intl.DateTimeFormat("en-GB", {
-  timeZone: "Asia/Jakarta",
-  hour: "2-digit",
-  minute: "2-digit",
-});
-const subscribe = (tick) => {
-  const id = setInterval(tick, 15000);
-  return () => clearInterval(id);
-};
-
-// The current time in Yogyakarta (WIB). Empty on the server, so the static HTML never shows a stale time.
-export function LocalTime() {
-  const time = useSyncExternalStore(
-    subscribe,
-    () => clock.format(new Date()),
-    () => "",
-  );
-  return (
-    <span className="tabular-nums" suppressHydrationWarning>
-      {time ? `${time} WIB` : "WIB"}
-    </span>
-  );
-}
-
 export function BackToTop({ children }) {
   return (
     <button

@@ -3,85 +3,148 @@ import Link from "next/link";
 import heroPic from "../assets/self2.jpg";
 import { HeroChart, Words } from "../components/chart";
 import { Depth, Drift, Magnetic, Marquee, Reveal } from "../components/fx";
-import { awards, experience, profile, skills } from "../content";
+import {
+  awards,
+  experience,
+  profile,
+  projects,
+  skills,
+  slugify,
+} from "../content";
 import PageTransition from "../components/pageTransition";
 
 export default function HomePage() {
   const current = experience.filter((job) => job.period.endsWith("present"));
+  const work = projects.filter((project) => project.shot).slice(0, 3);
 
   return (
     <PageTransition>
-      <section className="sheet grid items-start gap-12 pb-16 pt-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,500px)] lg:pt-14">
-        <Depth x={-18} y={-12}>
-          <div className="cartouche frame-in max-w-xl">
-            <h1 className="font-serif text-[clamp(2.75rem,6.5vw,4.75rem)] italic leading-[0.95] tracking-tight">
+      <section className="sheet pb-16 pt-10 lg:pt-14">
+        {/* The name runs the full width: at most two lines at every size */}
+        <Depth x={-10} y={-6}>
+          <div className="cartouche frame-in">
+            <h1 className="font-serif text-[clamp(2rem,7.4vw,6.75rem)] italic leading-[0.95] tracking-tight">
               <Words text={profile.name} delay={0.1} />
             </h1>
-            <p className="rise mt-5 text-xl" style={{ "--d": "0.45s" }}>
-              {profile.role}
-            </p>
             <p
-              className="rise mt-4 font-sans text-sm text-pencil"
-              style={{ "--d": "0.55s" }}
+              className="rise mt-6 max-w-[46ch] text-xl sm:text-2xl"
+              style={{ "--d": "0.45s" }}
             >
-              {profile.place}
-              <br />
-              {profile.coords}
+              {profile.role} Based in {profile.place}.
             </p>
-          </div>
-          <p className="rise mt-10 max-w-[60ch]" style={{ "--d": "0.65s" }}>
-            {profile.intro}
-          </p>
-          <div
-            className="rise mt-8 flex flex-wrap gap-3"
-            style={{ "--d": "0.75s" }}
-          >
-            <Magnetic>
-              <Link href="/projects" className="btn-primary">
-                <span className="roll">
-                  <span data-text="See projects">See projects</span>
-                </span>
-              </Link>
-            </Magnetic>
-            <Magnetic>
-              <Link href="/contact" className="btn-secondary">
-                <span className="roll">
-                  <span data-text="Get in touch">Get in touch</span>
-                </span>
-              </Link>
-            </Magnetic>
           </div>
         </Depth>
 
-        <Drift speed={0.12} className="max-lg:transform-none!">
-          <Depth x={22} y={16} tilt={5}>
-            <HeroChart>
-              <Depth
-                x={50}
-                y={36}
-                className="absolute right-[5%] top-[4%] w-[33%]"
-              >
-                <figure className="inset-settle border border-ink bg-paper p-1.5">
-                  <Image
-                    src={heroPic}
-                    alt="Portrait of Marcel"
-                    preload
-                    sizes="(min-width: 1024px) 170px, 33vw"
-                    className="block h-auto w-full"
-                  />
-                  <div className="scale-bar mt-1.5" />
-                </figure>
-              </Depth>
-            </HeroChart>
-          </Depth>
-        </Drift>
+        <div className="mt-12 grid items-start gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,560px)]">
+          <div className="lg:pt-6">
+            <p
+              className="rise max-w-[56ch] text-lg sm:text-xl"
+              style={{ "--d": "0.6s" }}
+            >
+              {profile.intro}
+            </p>
+            <div
+              className="rise mt-8 flex flex-wrap gap-3"
+              style={{ "--d": "0.7s" }}
+            >
+              <Magnetic>
+                <Link href="/projects" className="btn-primary">
+                  <span className="roll">
+                    <span data-text="See projects">See projects</span>
+                  </span>
+                </Link>
+              </Magnetic>
+              <Magnetic>
+                <Link href="/contact" className="btn-secondary">
+                  <span className="roll">
+                    <span data-text="Get in touch">Get in touch</span>
+                  </span>
+                </Link>
+              </Magnetic>
+            </div>
+          </div>
+
+          <Drift speed={0.12} className="max-lg:transform-none!">
+            <Depth x={22} y={16} tilt={5}>
+              <HeroChart>
+                <Depth
+                  x={50}
+                  y={36}
+                  className="absolute right-[5%] top-[4%] w-[33%]"
+                >
+                  <figure className="inset-settle bg-paper p-1.5">
+                    <Image
+                      src={heroPic}
+                      alt="Portrait of Marcel"
+                      preload
+                      sizes="(min-width: 1024px) 190px, 33vw"
+                      className="block h-auto w-full"
+                    />
+                    <div className="scale-bar mt-1.5" />
+                  </figure>
+                </Depth>
+              </HeroChart>
+            </Depth>
+          </Drift>
+        </div>
       </section>
 
       <div className="font-serif text-[clamp(2.5rem,6vw,5rem)] italic leading-none">
         <Marquee items={skills.flatMap((group) => group.items)} />
       </div>
 
-      <section className="sheet py-14" aria-labelledby="now">
+      {/* Real screenshots of the work, so the first page shows what I build */}
+      <section className="sheet pt-24" aria-labelledby="work">
+        <div className="flex flex-wrap items-end justify-between gap-4">
+          <Reveal
+            as="h2"
+            from="left"
+            id="work"
+            className="font-serif text-4xl italic sm:text-5xl"
+          >
+            Selected work
+          </Reveal>
+          <p className="reveal font-sans text-sm">
+            <Link href="/projects">All projects</Link>
+          </p>
+        </div>
+        <ul className="mt-10 grid gap-x-10 gap-y-12 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)]">
+          {work.map((project, i) => (
+            <Reveal
+              as="li"
+              key={project.title}
+              delay={i * 0.1}
+              className={i === 0 ? "lg:row-span-2" : undefined}
+            >
+              <Link
+                href={`/projects#${slugify(project.title)}`}
+                className="work-card block no-underline"
+              >
+                <div className="overflow-hidden bg-sea p-2 sm:p-3">
+                  <Image
+                    src={project.shot}
+                    alt={`Screenshot of ${project.title}`}
+                    sizes={
+                      i === 0
+                        ? "(min-width: 1024px) 600px, 100vw"
+                        : "(min-width: 1024px) 400px, 100vw"
+                    }
+                    className="block h-auto w-full"
+                  />
+                </div>
+                <h3
+                  className={`mt-5 font-serif italic leading-tight ${i === 0 ? "text-3xl" : "text-2xl"}`}
+                >
+                  {project.title}
+                </h3>
+                <p className="mt-2 max-w-[52ch]">{project.summary}</p>
+              </Link>
+            </Reveal>
+          ))}
+        </ul>
+      </section>
+
+      <section className="sheet pt-28" aria-labelledby="now">
         <Reveal
           as="h2"
           from="left"
@@ -110,10 +173,7 @@ export default function HomePage() {
         </ul>
       </section>
 
-      <section
-        className="sheet border-t border-ink py-14"
-        aria-labelledby="results"
-      >
+      <section className="sheet pt-28" aria-labelledby="results">
         <Reveal
           as="h2"
           from="left"
@@ -122,11 +182,11 @@ export default function HomePage() {
         >
           Recent results
         </Reveal>
-        <ul className="mt-8">
+        <ul className="mt-8 grid gap-2">
           {awards.slice(0, 4).map((award) => (
             <li
               key={award.title}
-              className="reveal row grid gap-1 border-t border-ink/20 py-4 sm:grid-cols-2 sm:gap-8"
+              className="reveal row tone grid gap-1 px-4 py-4 sm:grid-cols-2 sm:gap-8 sm:px-6"
             >
               <span>{award.title}</span>
               <span className="text-pencil">{award.detail}</span>

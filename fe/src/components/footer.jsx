@@ -2,14 +2,9 @@ import Link from "next/link";
 import { siGithub, siReaddotcv, siX } from "simple-icons";
 import { profile } from "../content";
 import { CompassRose } from "./chart";
-import { BackToTop, LocalTime } from "./footerExtras";
+import { BackToTop } from "./footerExtras";
 import { DriftText, Magnetic } from "./fx";
 
-// Rendered at build time, so this is the date the site was last published.
-const edition = new Intl.DateTimeFormat("en", {
-  month: "long",
-  year: "numeric",
-}).format(new Date());
 const year = new Date().getFullYear();
 
 const PAGES = [
@@ -81,19 +76,18 @@ export default function Footer() {
         </DriftText>
 
         <div className="reveal sheet">
-          <div className="grid gap-10 border-t border-ink pt-10 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr]">
             <div>
-              <Heading>Position</Heading>
-              <p className="font-serif text-lg italic">{profile.name}</p>
-              <p className="mt-1 font-sans text-sm">{profile.place}</p>
-              <p className="mt-1 font-sans text-sm text-land-ink">
-                {profile.coords}, <LocalTime />
+              <p className="font-serif text-2xl italic">{profile.name}</p>
+              <p className="mt-2 max-w-[40ch]">
+                Software engineer in {profile.place}, working on backends, data
+                and the robots that use them.
               </p>
             </div>
 
             <nav aria-label="Footer">
               <Heading>Pages</Heading>
-              <ul className="space-y-1.5 font-sans text-sm">
+              <ul className="space-y-1.5">
                 {PAGES.map(([label, href]) => (
                   <li key={href}>
                     <Link href={href} className="no-underline">
@@ -106,7 +100,7 @@ export default function Footer() {
 
             <div>
               <Heading>Elsewhere</Heading>
-              <ul className="space-y-1.5 font-sans text-sm">
+              <ul className="space-y-1.5">
                 {ELSEWHERE.map(({ label, href, icon, mono, hex }) => (
                   <li key={label}>
                     <a
@@ -133,30 +127,20 @@ export default function Footer() {
                 ))}
               </ul>
             </div>
-
-            <div>
-              <Heading>Chart notes</Heading>
-              <ul className="space-y-1.5 font-sans text-sm text-land-ink">
-                <li>Edition of {edition}</li>
-                <li>Built with Next.js, set in Newsreader and B612</li>
-                <li className="max-sm:hidden">Press Ctrl K to search</li>
-              </ul>
-              <div className="mt-5">
-                <BackToTop>
-                  <CompassRose className="back-to-top-rose size-6 text-purple" />
-                  <span className="link-draw">Back to top</span>
-                </BackToTop>
-              </div>
-            </div>
           </div>
         </div>
 
-        {/* A chart's graduated border, with the copyright where a chart prints its number */}
-        <div className="sheet mt-12 pb-8">
+        {/* A chart's graduated border closes the page */}
+        <div className="sheet mt-14 pb-8">
           <div className="scale-bar" aria-hidden="true" />
-          <div className="mt-3 flex flex-wrap justify-between gap-2 font-sans text-xs text-land-ink">
-            <p>© {year} Marcelinus Dinoglide Yoga Prakoso</p>
-            <p>Yogyakarta, {profile.coords}</p>
+          <div className="mt-4 flex flex-wrap items-center justify-between gap-4 font-sans text-sm">
+            <p className="text-land-ink">
+              © {year} Marcelinus Dinoglide Yoga Prakoso
+            </p>
+            <BackToTop>
+              <CompassRose className="back-to-top-rose size-6 text-purple" />
+              <span className="link-draw">Back to top</span>
+            </BackToTop>
           </div>
         </div>
       </div>

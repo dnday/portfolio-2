@@ -8,7 +8,7 @@ import ThemeAnchor from "./themeAnchor";
 export default function Nav() {
   return (
     <header
-      className="sheet flex flex-wrap items-center justify-between gap-x-10 gap-y-1 border-b border-ink pb-3 pt-5"
+      className="sheet flex flex-wrap items-center justify-between gap-x-10 gap-y-1 pb-3 pt-5"
       style={{ viewTransitionName: "site-header" }}
     >
       <Link href="/" className="flex items-center gap-3 py-2 no-underline">

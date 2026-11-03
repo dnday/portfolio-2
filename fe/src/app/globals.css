@@ -165,7 +165,7 @@ button {
 
 /* Title block: a chart cartouche, two rules */
 .cartouche {
-  border: 1px solid var(--color-ink);
+  border: 2px solid var(--color-ink);
   outline: 2px solid var(--color-ink);
   outline-offset: 4px;
   padding: 28px 28px 24px;
@@ -201,9 +201,11 @@ button {
   color: var(--color-paper);
 }
 
+/* Flat fill in the sea tone, no outline */
 .btn-secondary {
-  --sweep: var(--color-sea);
-  background-color: var(--color-paper);
+  --sweep: var(--color-shallow);
+  border-color: var(--color-sea);
+  background-color: var(--color-sea);
 }
 
 .btn-primary:hover,
@@ -283,12 +285,17 @@ button {
   isolation: isolate;
 }
 
+/* Rows and blocks sit on a step of tone instead of between rules */
+.tone {
+  background: var(--color-sea);
+}
+
 .row::before {
   content: "";
   position: absolute;
-  inset: 0 -12px;
+  inset: 0;
   z-index: -1;
-  background: var(--color-sea);
+  background: var(--color-shallow);
   transform: scaleX(0);
   transform-origin: right;
 }
@@ -908,9 +915,8 @@ html[data-theme-switch] header {
   align-items: center;
   gap: 10px;
   height: 100%;
-  border: 1px solid color-mix(in oklab, var(--color-ink) 20%, transparent);
   padding: 16px 8px 12px;
-  background: var(--color-paper);
+  background: var(--color-sea);
   font-family: var(--font-sans);
   font-size: 0.75rem;
   text-align: center;
@@ -938,8 +944,7 @@ html[data-theme="dark"] .skill-tile[data-dim] {
 }
 
 .skill-tile:hover {
-  border-color: var(--brand-on);
-  background: color-mix(in oklab, var(--brand-on) 8%, var(--color-paper));
+  background: color-mix(in oklab, var(--brand-on) 14%, var(--color-sea));
 }
 
 .skill-tile:hover :is(svg, .skill-mono) {
@@ -950,7 +955,6 @@ html[data-theme="dark"] .skill-tile[data-dim] {
   .skill-tile {
     transition:
       transform 0.5s var(--ease-spring),
-      border-color 0.3s ease,
       background-color 0.3s ease;
   }
 
@@ -975,8 +979,8 @@ html[data-theme="dark"] .skill-tile[data-dim] {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  border: 1px solid color-mix(in oklab, var(--color-ink) 20%, transparent);
-  padding: 3px 9px;
+  background: var(--color-paper);
+  padding: 4px 10px;
   font-family: var(--font-sans);
   font-size: 0.75rem;
 }
@@ -998,13 +1002,8 @@ html[data-theme="dark"] .stack-chip[data-dim] {
 
 .project-card {
   height: 100%;
-  border: 1px solid color-mix(in oklab, var(--color-ink) 20%, transparent);
-  padding: 24px;
-  background: var(--color-paper);
-}
-
-.project-card:hover {
-  border-color: var(--color-purple);
+  padding: 28px;
+  background: var(--color-sea);
 }
 
 .project-card:hover h3 {
@@ -1024,8 +1023,7 @@ html[data-theme="dark"] .stack-chip[data-dim] {
 @media (prefers-reduced-motion: no-preference) {
   .project-card {
     transition:
-      transform 0.5s var(--ease-spring),
-      border-color 0.3s ease;
+      transform 0.5s var(--ease-spring);
   }
 
   .project-card h3 {
@@ -1083,5 +1081,24 @@ html[data-theme="dark"] .social-link:hover :is(svg, .social-mono) {
 
   .back-to-top:hover .back-to-top-rose {
     transform: rotate(-180deg);
+  }
+}
+
+/* Home "Selected work" (app/page.js) */
+.work-card h3 {
+  transition: color 0.3s ease;
+}
+
+.work-card:hover h3 {
+  color: var(--color-purple);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .work-card img {
+    transition: transform 1.2s var(--ease-glide);
+  }
+
+  .work-card:hover img {
+    transform: scale(1.04);
   }
 }

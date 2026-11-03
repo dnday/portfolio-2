@@ -70,7 +70,7 @@ export function Words({ text, delay = 0 }) {
 // missed on phones, where it sits below the fold.
 export function HeroChart({ children }) {
   return (
-    <div className="play-in-view rise relative border border-ink" style={{ "--d": "0.15s" }}>
+    <div className="play-in-view rise relative border-2 border-ink" style={{ "--d": "0.15s" }}>
       <style>{SAIL}</style>
       <svg viewBox="0 0 560 640" className="block h-auto w-full" aria-hidden="true">
         <path d={g.sea} fill="var(--color-sea)" />

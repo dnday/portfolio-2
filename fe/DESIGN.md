@@ -231,3 +231,11 @@ The owner wants the site to feel alive, so everything moves, but slowly and with
 - No cream with terracotta, no black with acid green, no all-caps or monospace label chrome, no meta strings joined with middle dots.
 - No emoji, no sparkles, no copy like "seamless", "elevate" or "cutting-edge", no arrows appended to buttons.
 - No bouncy or looping motion: entrances move 32px at most, finish within about 2 seconds, and nothing repeats for more than 5 seconds.
+
+## Taste pass (Nov 2026, after taste-skill)
+
+- The home title is the full name across the page, two lines at most at every width, with one supporting sentence under it.
+- No hairlines between things: list rows and blocks sit on a step of tone (Sea on paper), cards are tone fills, and sections are separated by space (about 110–130px). Only the cartouche and the chart frame keep a rule, at 2px, as chart artifacts.
+- The secondary button is a flat Sea fill, not an outline.
+- No micro-meta: no coordinates, local time or edition stamps in the hero, footer or intro.
+- The home page shows real work: "Selected work" with three project screenshots linking to their place on Projects.

@@ -44,7 +44,7 @@ export default function SkillsPage() {
             ))}
           </tbody>
         </table>
-        <p className="reveal border-t border-ink pt-6">
+        <p className="reveal pt-8">
           Spoken: {spokenLanguages}
         </p>
       </section>

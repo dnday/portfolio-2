@@ -113,10 +113,7 @@ async function readGithub() {
 
 function Logbook({ data }) {
   return (
-    <section
-      className="sheet mt-24 border-t border-ink pt-12"
-      aria-labelledby="logbook"
-    >
+    <section className="sheet pt-32" aria-labelledby="logbook">
       <Reveal
         as="h2"
         from="left"
@@ -133,7 +130,7 @@ function Logbook({ data }) {
       </p>
 
       <div className="reveal mt-10">
-        <div className="flex h-3 border border-ink" aria-hidden="true">
+        <div className="flex h-3" aria-hidden="true">
           {data.languages.map((lang, i) => (
             <span
               key={lang.name}
@@ -170,7 +167,7 @@ function Logbook({ data }) {
         {data.recent.map((repo) => (
           <li
             key={repo.name}
-            className="reveal row grid gap-1 border-t border-ink/20 py-3 sm:grid-cols-[9rem_minmax(0,1fr)_10rem] sm:gap-6"
+            className="reveal row tone grid gap-1 px-4 py-3 sm:grid-cols-[9rem_minmax(0,1fr)_10rem] sm:gap-6 sm:px-6"
           >
             <span className="font-sans text-sm text-pencil">{repo.pushed}</span>
             <span>
@@ -206,14 +203,14 @@ export default async function ProjectsPage() {
               <article
                 id={slugify(project.title)}
                 key={project.title}
-                className={`grid items-center gap-6 border border-ink bg-paper p-5 sm:p-8 lg:min-h-[440px] lg:gap-12 lg:p-10 ${flip ? "lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]" : "lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)]"}`}
+                className={`grid items-center gap-6 bg-sea p-5 sm:p-8 lg:min-h-[440px] lg:gap-12 lg:p-10 ${flip ? "lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]" : "lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)]"}`}
               >
                 <Reveal
                   from={flip ? "right" : "left"}
                   className={flip ? "lg:order-2" : undefined}
                 >
                   <Tilt>
-                    <figure className="shot border border-ink bg-paper p-2">
+                    <figure className="shot bg-paper p-2">
                       <div className="overflow-hidden">
                         <Parallax range={24}>
                           <Image
@@ -236,10 +233,7 @@ export default async function ProjectsPage() {
           })}
         </Stack>
       </section>
-      <section
-        className="sheet mt-20 border-t border-ink pt-12"
-        aria-labelledby="more"
-      >
+      <section className="sheet pt-32" aria-labelledby="more">
         <Reveal
           as="h2"
           from="left"

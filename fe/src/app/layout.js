@@ -90,7 +90,6 @@ export default function RootLayout({ children }) {
         <div className="intro" aria-hidden="true">
           <Image src={logo} alt="" width={96} height={96} className="intro-logo" />
           <p className="intro-name font-serif italic">Marcel</p>
-          <p className="intro-coords font-sans text-sm text-pencil">{profile.coords}</p>
           <span className="intro-bar scale-bar" />
         </div>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />

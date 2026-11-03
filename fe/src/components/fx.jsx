@@ -331,7 +331,7 @@ export function Marquee({ items, speed = 2.5 }) {
 
   return (
     <div
-      className="marquee overflow-hidden border-y border-ink py-5"
+      className="marquee overflow-hidden bg-sea py-6"
       aria-hidden="true"
       onPointerEnter={() => (paused.current = true)}
       onPointerLeave={() => (paused.current = false)}
