@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { profile, projects, slugify } from "../content";
+import { openCv } from "./cvDialog";
 import { switchTheme } from "./themeAnchor";
 
 // Ctrl+K / Cmd+K (or the Search button): jump to a page or project, or run a quick action.
@@ -33,7 +34,7 @@ const ITEMS = [
     label: "Copy the link to this page",
     run: (_, notify) => navigator.clipboard.writeText(location.href).then(() => notify("Link copied")),
   },
-  { group: "Actions", label: "Download my CV (PDF)", run: open(profile.cv) },
+  { group: "Actions", label: "See my CV", hint: "PDF", run: openCv },
   { group: "Actions", label: "Send me a message", run: go("/contact") },
   { group: "Actions", label: "Open GitHub", hint: "github.com/dnday", run: open(profile.github) },
   { group: "Actions", label: "Open LinkedIn", run: open(profile.linkedin) },

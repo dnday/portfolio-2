@@ -2,7 +2,7 @@ import Image from "next/image";
 import heroPic from "../../assets/self2.jpg";
 import { PageHead } from "../../components/chart";
 import { awards, education, experience, organizations } from "../../content";
-import { Reveal, TrackLine } from "../../components/fx";
+import { Reveal } from "../../components/fx";
 import PageTransition from "../../components/pageTransition";
 
 export const metadata = { title: "About", alternates: { canonical: "/about" } };
@@ -68,31 +68,40 @@ export default function AboutPage() {
         >
           Experience
         </Reveal>
-        <div className="relative mt-8">
-          <TrackLine />
-          <ol className="space-y-12">
-            {experience.map((job) => (
-              <Reveal
-                as="li"
-                key={job.org}
-                from="left"
-                className="track-item relative pl-12"
-              >
-                <span className="fix" aria-hidden="true" />
-                <p className="font-sans text-sm text-pencil">{job.period}</p>
-                <h3 className="mt-1 font-serif text-2xl italic">{job.role}</h3>
-                <p className="font-sans text-sm">
-                  {job.org}, {job.team}
+        {/* One block per role: a single figure as proof, then the story in prose */}
+        <ol className="mt-10 grid gap-6">
+          {experience.map((job) => (
+            <Reveal
+              as="li"
+              key={job.org}
+              className="role grid gap-6 p-6 sm:p-10 lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] lg:gap-14"
+            >
+              <p>
+                <span
+                  className={`block whitespace-nowrap font-serif leading-none tracking-tight text-purple ${
+                    job.figure.value.length > 4
+                      ? "text-[clamp(3rem,6vw,5rem)]"
+                      : "text-[clamp(3.5rem,8vw,6.5rem)]"
+                  }`}
+                >
+                  {job.figure.value}
+                </span>
+                <span className="mt-3 block max-w-[24ch]">
+                  {job.figure.label}
+                </span>
+              </p>
+              <div>
+                <h3 className="font-serif text-3xl leading-tight sm:text-4xl">
+                  {job.org}
+                </h3>
+                <p className="mt-2 font-sans text-sm text-pencil">
+                  {job.role}, {job.period}
                 </p>
-                <ul className="mt-4 max-w-[68ch] list-disc space-y-2 pl-5 marker:text-pencil">
-                  {job.points.map((point) => (
-                    <li key={point}>{point}</li>
-                  ))}
-                </ul>
-              </Reveal>
-            ))}
-          </ol>
-        </div>
+                <p className="mt-5 max-w-[60ch] text-lg">{job.story}</p>
+              </div>
+            </Reveal>
+          ))}
+        </ol>
       </section>
 
       <section className="sheet mt-20" aria-labelledby="organizations">

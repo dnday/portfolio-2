@@ -1,5 +1,6 @@
 import { PageHead } from "../../components/chart";
 import ContactForm from "../../components/contactForm";
+import { CvLink } from "../../components/cvDialog";
 import { profile } from "../../content";
 import PageTransition from "../../components/pageTransition";
 
@@ -22,7 +23,7 @@ export default function ContactPage() {
             <a href={profile.x}>X</a>
           </li>
           <li>
-            <a href={profile.cv}>Download my CV (PDF)</a>
+            <CvLink>See my CV (PDF)</CvLink>
           </li>
         </ul>
       </section>

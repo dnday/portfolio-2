@@ -248,25 +248,6 @@ button {
   outline-offset: 6px;
 }
 
-/* Experience as a plotted track: a dashed pencil line through position fixes */
-.track-line {
-  position: absolute;
-  left: 11px;
-  top: 12px;
-  bottom: 12px;
-  border-left: 1.5px dashed var(--color-pencil);
-}
-
-.fix {
-  position: absolute;
-  left: 0;
-  top: 4px;
-  width: 23px;
-  height: 23px;
-  border: 1.5px solid var(--color-pencil);
-  border-radius: 50%;
-  background: radial-gradient(var(--color-pencil) 0 2.5px, var(--color-paper) 3px);
-}
 
 /* Headings set word by word (Words in components/chart.jsx): each word slides up from behind its own
    clip. The negative insets keep italic overhangs and descenders inside the clip. */
@@ -338,10 +319,6 @@ button {
     border-color: var(--color-purple);
   }
 
-  .track-item:hover .fix {
-    border-color: var(--color-purple);
-    background: radial-gradient(var(--color-purple) 0 2.5px, var(--color-paper) 3px);
-  }
 }
 
 /* Motion. Page-load entrances and hover are CSS; components/motion.jsx adds .in to .reveal and
@@ -461,9 +438,6 @@ button {
     transition: transform 1.2s var(--ease-glide);
   }
 
-  .fix {
-    transition: border-color 0.3s ease, transform 0.5s var(--ease-spring);
-  }
 
   .logo-mark {
     transition: transform 0.7s var(--ease-spring);
@@ -489,9 +463,6 @@ button {
       transform: scaleX(1.5);
     }
 
-    .track-item:hover .fix {
-      transform: scale(1.2);
-    }
   }
 
   /* A marker rides the left border scale as you scroll */
@@ -1149,4 +1120,42 @@ html[data-theme="dark"] .social-link:hover :is(svg, .social-mono) {
     stroke-dashoffset: 0;
     animation: fade-in 0.6s ease-out;
   }
+}
+
+/* CV preview popup (components/cvDialog.jsx) */
+.cv-dialog {
+  width: min(960px, calc(100vw - 32px));
+  height: min(92vh, 1200px);
+  margin: auto;
+  padding: 0;
+  border: 2px solid var(--color-ink);
+  background: var(--color-paper);
+  color: var(--color-ink);
+}
+
+.cv-dialog[open] {
+  display: flex;
+  flex-direction: column;
+}
+
+.cv-dialog::backdrop {
+  background: rgb(0 0 0 / 0.45);
+}
+
+.cv-frame {
+  flex: 1;
+  width: 100%;
+  border: 0;
+  background: var(--color-sea);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .cv-dialog[open] {
+    animation: rise 0.45s var(--ease-glide);
+  }
+}
+
+/* Experience on About: one tone block per role, the figure leads */
+.role {
+  background: var(--color-sea);
 }

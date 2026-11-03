@@ -2,6 +2,7 @@ import Link from "next/link";
 import { siGithub, siReaddotcv, siX } from "simple-icons";
 import { profile } from "../content";
 import { CompassRose } from "./chart";
+import { CvLink } from "./cvDialog";
 import { BackToTop } from "./footerExtras";
 import { DriftText, Magnetic } from "./fx";
 
@@ -101,30 +102,34 @@ export default function Footer() {
             <div>
               <Heading>Elsewhere</Heading>
               <ul className="space-y-1.5">
-                {ELSEWHERE.map(({ label, href, icon, mono, hex }) => (
-                  <li key={label}>
-                    <a
-                      href={href}
-                      className="social-link flex items-center gap-2.5 no-underline"
-                      style={{ "--brand": `#${icon?.hex ?? hex}` }}
-                      {...(href.startsWith("http") && {
-                        target: "_blank",
-                        rel: "noopener noreferrer",
-                      })}
-                    >
-                      {icon ? (
-                        <svg viewBox="0 0 24 24" aria-hidden="true">
-                          <path d={icon.path} />
-                        </svg>
-                      ) : (
-                        <span className="social-mono" aria-hidden="true">
-                          {mono}
-                        </span>
-                      )}
-                      <span className="link-draw">{label}</span>
-                    </a>
-                  </li>
-                ))}
+                {ELSEWHERE.map(({ label, href, icon, mono, hex }) => {
+                  // The CV opens in the site's preview popup; the rest are other sites.
+                  const Tag = href === profile.cv ? CvLink : "a";
+                  return (
+                    <li key={label}>
+                      <Tag
+                        href={href}
+                        className="social-link flex items-center gap-2.5 no-underline"
+                        style={{ "--brand": `#${icon?.hex ?? hex}` }}
+                        {...(href.startsWith("http") && {
+                          target: "_blank",
+                          rel: "noopener noreferrer",
+                        })}
+                      >
+                        {icon ? (
+                          <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d={icon.path} />
+                          </svg>
+                        ) : (
+                          <span className="social-mono" aria-hidden="true">
+                            {mono}
+                          </span>
+                        )}
+                        <span className="link-draw">{label}</span>
+                      </Tag>
+                    </li>
+                  );
+                })}
               </ul>
             </div>
           </div>

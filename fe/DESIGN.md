@@ -241,3 +241,5 @@ The owner wants the site to feel alive, so everything moves, but slowly and with
 - The home page shows real work: "Selected work" with three project screenshots linking to their place on Projects.
 - The live thing: "Plot a course" on the hero chart. Four buoys are real results (KKI, PKM-KC, the two DTETI bootcamps). Picking one sails the boat there, draws the leg and reads out course, distance and the result with a link. Buoys are links, so it works without JavaScript and from the keyboard; under reduced motion the boat moves instantly.
 - No monospace anywhere, including the Ctrl K hint.
+- Experience (About) is one Sea block per role: a single large purple figure that proves it (3rd, 100+, PKM-KC, 500+) with its label, then the organisation, role and dates, and a short first-person paragraph. No timeline dots and no bullet lists.
+- The CV opens in a preview popup (components/cvDialog.jsx) with Download and Close; the PDF loads only when opened, and the link still goes to the PDF without JavaScript.

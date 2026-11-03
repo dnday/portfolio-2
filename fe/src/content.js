@@ -8,7 +8,11 @@ import recruitShot from "./assets/Project6.webp";
 export const SITE_URL = "https://marcelinusdino.vercel.app";
 
 // URL fragment for a project, e.g. /projects#instride
-export const slugify = (title) => title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+export const slugify = (title) =>
+  title
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
 
 export const profile = {
   name: "Marcelinus Dinoglide Yoga Prakoso",
@@ -35,49 +39,72 @@ export const experience = [
     team: "autonomous boat team",
     role: "Software Programmer",
     period: "Dec 2025 – present",
-    summary: "Building the boat’s vision system and the dashboard we watch during field tests. We placed 3rd at KKI 2026.",
-    points: [
-      "Trained the object detection model the boat uses, from labelling the dataset to running it in real time on the onboard computer.",
-      "Built the mission dashboard: live position on a map with the waypoints and buoys, next to the onboard camera feed.",
-      "Our team placed 3rd at Kontes Kapal Indonesia 2026.",
-    ],
+    summary:
+      "Building the boat’s vision system and the dashboard we watch during field tests. We placed 3rd at KKI 2026.",
+    figure: { value: "3rd", label: "at Kontes Kapal Indonesia 2026" },
+    story:
+      "I give the boat its eyes. I trained the object detection model it runs on board, starting from a dataset we labelled ourselves, and built the dashboard we watch from the shore: the boat on a map with its waypoints and buoys, next to the live camera.",
   },
   {
-    org: "Google Developer Group on Campus UGM",
+    org: "GDG on Campus UGM",
     team: "KosCheck",
     role: "Hacker (backend developer)",
     period: "Dec 2025 – Jun 2026",
-    points: [
-      "Built the backend for KosCheck, which flags suspicious boarding-house listings using a mix of rules and an LLM.",
-      "Shipped it in Docker behind Nginx, where it handled more than 100 requests per second.",
-    ],
+    figure: {
+      value: "100+",
+      label: "requests a second, in Docker behind Nginx",
+    },
+    story:
+      "In a hackathon team I built the backend of KosCheck, which checks boarding-house listings for scams with a mix of plain rules and an LLM. Then I made it hold up under load.",
   },
   {
     org: "OstoSense",
     team: "PKM-KC 2026 research",
     role: "Software Engineer",
     period: "Jan 2026 – present",
-    summary: "Writing the backend, dashboard and patient app for a medical wearable funded by PKM-KC.",
-    points: [
-      "Our wearable estimates the risk of an ostomy leak, and the team won national PKM-KC 2026 funding for it.",
-      "I build the software around the device: a NestJS backend fed by its sensors over MQTT, a dashboard for clinicians and an app for patients.",
-    ],
+    summary:
+      "Writing the backend, dashboard and patient app for a medical wearable funded by PKM-KC.",
+    figure: { value: "PKM-KC", label: "national research funding, 2026" },
+    story:
+      "OstoSense is a wearable that estimates the risk of an ostomy leak. I build everything around the device: a NestJS backend its sensors talk to over MQTT, a dashboard for clinicians and an app for patients.",
   },
   {
     org: "PIONIR Kesatria UGM",
     team: "HumIT division",
     role: "Website Developer",
     period: "May 2025 – Aug 2025",
-    points: ["Built the event website. More than 500 people used it during the event."],
+    figure: { value: "500+", label: "people used it during the event" },
+    story:
+      "I built the event website for PIONIR Kesatria, and kept it running for everyone who came through it.",
   },
 ];
 
 export const organizations = [
-  { org: "KMTETI FT UGM", role: "Workshop Division Staff", period: "Jan 2025 – present" },
-  { org: "FindIT! UGM", role: "CTF Technical Staff", period: "Oct 2025 – May 2026" },
-  { org: "Technocorner UGM", role: "Robotics Technical Staff", period: "Oct 2024 – Jun 2025" },
-  { org: "Misa Kampus UGM", role: "Human Resources Staff", period: "Sep 2024 – Feb 2026" },
-  { org: "FindIT! UGM", role: "Logistics and Equipment Division Staff", period: "Oct 2024 – May 2025" },
+  {
+    org: "KMTETI FT UGM",
+    role: "Workshop Division Staff",
+    period: "Jan 2025 – present",
+  },
+  {
+    org: "FindIT! UGM",
+    role: "CTF Technical Staff",
+    period: "Oct 2025 – May 2026",
+  },
+  {
+    org: "Technocorner UGM",
+    role: "Robotics Technical Staff",
+    period: "Oct 2024 – Jun 2025",
+  },
+  {
+    org: "Misa Kampus UGM",
+    role: "Human Resources Staff",
+    period: "Sep 2024 – Feb 2026",
+  },
+  {
+    org: "FindIT! UGM",
+    role: "Logistics and Equipment Division Staff",
+    period: "Oct 2024 – May 2025",
+  },
 ];
 
 export const projects = [
@@ -91,7 +118,8 @@ export const projects = [
   },
   {
     title: "PIONIR Kesatria 2025",
-    summary: "The event website, with an interactive map. More than 500 people used it during the event.",
+    summary:
+      "The event website, with an interactive map. More than 500 people used it during the event.",
     stack: ["Next.js", "Tailwind CSS"],
     live: "https://pionir-kesatria-ft.vercel.app",
     shot: pionirShot,
@@ -120,7 +148,8 @@ export const projects = [
   },
   {
     title: "Instride",
-    summary: "A mood tracker for students that their counselors can follow, with privacy built into the database.",
+    summary:
+      "A mood tracker for students that their counselors can follow, with privacy built into the database.",
     stack: ["Next.js", "Supabase"],
     repo: "https://github.com/dnday/Instride",
   },
@@ -136,38 +165,80 @@ export const projects = [
   {
     title: "Smart Harvest Window Optimizer",
     award: "2nd place, Bootcamp IoT DTETI 2026",
-    summary: "A small ESP32 sensor setup that predicts when chili plants are ready to harvest.",
+    summary:
+      "A small ESP32 sensor setup that predicts when chili plants are ready to harvest.",
     stack: ["ESP32", "MQTT", "Node-RED"],
     repo: "https://github.com/dnday/bootcamp-iot",
   },
   {
     title: "Restaurant Menu API",
-    summary: "A Go API that suggests dishes by mood and reads the sentiment of reviews.",
+    summary:
+      "A Go API that suggests dishes by mood and reads the sentiment of reviews.",
     stack: ["Go", "MongoDB", "Gemini"],
     repo: "https://github.com/dnday/gdgoc-be",
   },
 ];
 
 export const skills = [
-  { group: "Languages", items: ["Python", "Go", "TypeScript", "JavaScript", "C++", "SQL"] },
-  { group: "Web and backend", items: ["FastAPI", "NestJS", "Next.js", "React", "Tailwind CSS"] },
+  {
+    group: "Languages",
+    items: ["Python", "Go", "TypeScript", "JavaScript", "C++", "SQL"],
+  },
+  {
+    group: "Web and backend",
+    items: ["FastAPI", "NestJS", "Next.js", "React", "Tailwind CSS"],
+  },
   { group: "Data", items: ["PostgreSQL", "Supabase", "MongoDB", "Firebase"] },
-  { group: "Infrastructure", items: ["Docker", "Nginx", "Linux", "GitHub Actions", "Vercel"] },
-  { group: "AI and robotics", items: ["YOLOv8", "OpenVINO", "OpenCV", "Gemini API", "ROS 2", "ESP32", "MQTT"] },
+  {
+    group: "Infrastructure",
+    items: ["Docker", "Nginx", "Linux", "GitHub Actions", "Vercel"],
+  },
+  {
+    group: "AI and robotics",
+    items: [
+      "YOLOv8",
+      "OpenVINO",
+      "OpenCV",
+      "Gemini API",
+      "ROS 2",
+      "ESP32",
+      "MQTT",
+    ],
+  },
 ];
 
 export const spokenLanguages = "Indonesian (native) and English.";
 
 export const awards = [
-  { title: "3rd place, Kontes Kapal Indonesia 2026", detail: "Autonomous boat, with Gamantaray UGM" },
-  { title: "1st place, Bootcamp AI DTETI UGM 2026", detail: "Post-disaster damage triage" },
-  { title: "2nd place, Bootcamp IoT DTETI UGM 2026", detail: "Smart harvest window optimizer" },
+  {
+    title: "3rd place, Kontes Kapal Indonesia 2026",
+    detail: "Autonomous boat, with Gamantaray UGM",
+  },
+  {
+    title: "1st place, Bootcamp AI DTETI UGM 2026",
+    detail: "Post-disaster damage triage",
+  },
+  {
+    title: "2nd place, Bootcamp IoT DTETI UGM 2026",
+    detail: "Smart harvest window optimizer",
+  },
   { title: "PKM-KC 2026 research grant", detail: "OstoSense, Kemdiktisaintek" },
   { title: "Silver medal, ISTEC 2023", detail: "Life science category" },
-  { title: "UKBI 726, rated Istimewa", detail: "Indonesian language proficiency test" },
+  {
+    title: "UKBI 726, rated Istimewa",
+    detail: "Indonesian language proficiency test",
+  },
 ];
 
 export const certificates = [
-  { title: "Google Cloud skill badges", where: "Credly", url: "https://www.credly.com/users/marcelinus-dinoglide-yoga-prakoso.7441e0a5" },
-  { title: "Getting Started with Haskell", where: "Dicoding", url: "https://www.dicoding.com/certificates/6RPNYQDQRZ2M" },
+  {
+    title: "Google Cloud skill badges",
+    where: "Credly",
+    url: "https://www.credly.com/users/marcelinus-dinoglide-yoga-prakoso.7441e0a5",
+  },
+  {
+    title: "Getting Started with Haskell",
+    where: "Dicoding",
+    url: "https://www.dicoding.com/certificates/6RPNYQDQRZ2M",
+  },
 ];

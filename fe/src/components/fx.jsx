@@ -232,25 +232,6 @@ export function ScrollSpin({ as = "g", turn = 0.2, className, children }) {
   );
 }
 
-// About: the experience track line is drawn as you scroll through it.
-export function TrackLine() {
-  const ref = useRef(null);
-  const reduce = useReducedMotion();
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start 85%", "end 55%"],
-  });
-  const scaleY = useSpring(scrollYProgress, { stiffness: 100, damping: 25 });
-  return (
-    <motion.span
-      ref={ref}
-      aria-hidden="true"
-      className="track-line"
-      style={reduce ? undefined : { scaleY, originY: 0 }}
-    />
-  );
-}
-
 // Oversized text that slides sideways as the page scrolls to the end: the footer.
 export function DriftText({ className, children }) {
   const ref = useRef(null);
@@ -280,7 +261,6 @@ export function ScrollProgress() {
     />
   );
 }
-
 
 const wrap = (min, max, v) =>
   ((((v - min) % (max - min)) + (max - min)) % (max - min)) + min;
