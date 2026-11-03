@@ -113,7 +113,7 @@ export default function CommandPalette() {
         className="order-2 flex items-center gap-2 py-2 font-sans text-sm text-pencil hover:text-purple sm:order-3"
       >
         Search
-        <kbd className="hidden border border-current px-1.5 py-0.5 text-xs sm:inline">Ctrl K</kbd>
+        <kbd className="hidden bg-sea px-1.5 py-0.5 font-sans text-xs text-ink sm:inline">Ctrl K</kbd>
       </button>
 
       <dialog

@@ -239,3 +239,5 @@ The owner wants the site to feel alive, so everything moves, but slowly and with
 - The secondary button is a flat Sea fill, not an outline.
 - No micro-meta: no coordinates, local time or edition stamps in the hero, footer or intro.
 - The home page shows real work: "Selected work" with three project screenshots linking to their place on Projects.
+- The live thing: "Plot a course" on the hero chart. Four buoys are real results (KKI, PKM-KC, the two DTETI bootcamps). Picking one sails the boat there, draws the leg and reads out course, distance and the result with a link. Buoys are links, so it works without JavaScript and from the keyboard; under reduced motion the boat moves instantly.
+- No monospace anywhere, including the Ctrl K hint.

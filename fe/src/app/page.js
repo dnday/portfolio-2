@@ -11,7 +11,41 @@ import {
   skills,
   slugify,
 } from "../content";
+import Helm from "../components/helm";
 import PageTransition from "../components/pageTransition";
+
+// Buoys on the hero chart, each a real result (chart viewBox coordinates, clear of the portrait,
+// the compass and the plotted track).
+const STOPS = [
+  {
+    x: 175,
+    y: 115,
+    title: "3rd place, Kontes Kapal Indonesia 2026",
+    detail: "with the Gamantaray autonomous boat team.",
+    href: "/about#experience",
+  },
+  {
+    x: 470,
+    y: 330,
+    title: "PKM-KC 2026 research grant",
+    detail: "for OstoSense, a wearable that warns of ostomy leaks.",
+    href: "/about#experience",
+  },
+  {
+    x: 440,
+    y: 465,
+    title: "1st place, Bootcamp AI DTETI 2026",
+    detail: "for post-disaster damage triage from satellite images.",
+    href: "/projects#post-disaster-damage-triage-system",
+  },
+  {
+    x: 255,
+    y: 480,
+    title: "2nd place, Bootcamp IoT DTETI 2026",
+    detail: "for a sensor rig that times the chili harvest.",
+    href: "/projects#smart-harvest-window-optimizer",
+  },
+];
 
 export default function HomePage() {
   const current = experience.filter((job) => job.period.endsWith("present"));
@@ -83,6 +117,7 @@ export default function HomePage() {
                     <div className="scale-bar mt-1.5" />
                   </figure>
                 </Depth>
+                <Helm stops={STOPS} />
               </HeroChart>
             </Depth>
           </Drift>

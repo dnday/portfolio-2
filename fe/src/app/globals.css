@@ -1102,3 +1102,51 @@ html[data-theme="dark"] .social-link:hover :is(svg, .social-mono) {
     transform: scale(1.04);
   }
 }
+
+/* Plot a course (components/helm.jsx): buoys the visitor can send the boat to */
+.buoy {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  translate: -50% -50%;
+  border-radius: 50%;
+}
+
+.buoy > span {
+  width: 18px;
+  height: 18px;
+  border: 3px solid var(--color-paper);
+  border-radius: 50%;
+  background: var(--color-purple);
+}
+
+.buoy[aria-current] > span {
+  background: var(--color-ink);
+}
+
+.buoy:focus-visible {
+  outline-offset: 0;
+}
+
+/* Once the visitor takes the helm, the opening boat and its ping give way to theirs */
+.play-in-view:has(.helm[data-active]) :is(.boat, .ping) {
+  display: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .buoy > span {
+    transition: transform 0.5s var(--ease-spring), background-color 0.2s ease;
+  }
+
+  .buoy:hover > span,
+  .buoy:focus-visible > span {
+    transform: scale(1.35);
+  }
+
+  .helm-leg {
+    stroke-dashoffset: 0;
+    animation: fade-in 0.6s ease-out;
+  }
+}
